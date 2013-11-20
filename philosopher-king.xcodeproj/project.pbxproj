@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E3C5BF00183D77DE0053F49B /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BEFE183D77DE0053F49B /* Window.cpp */; };
+		E3C5BF05183D78030053F49B /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BF01183D78030053F49B /* Matrix4.cpp */; };
+		E3C5BF06183D78030053F49B /* Vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BF03183D78030053F49B /* Vector4.cpp */; };
+		E3C5BF09183D782E0053F49B /* StaticCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BF07183D782E0053F49B /* StaticCamera.cpp */; };
+		E3FECBA3183D76F0002BAC27 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FECBA2183D76F0002BAC27 /* OpenGL.framework */; };
+		E3FECBA5183D76F4002BAC27 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FECBA4183D76F4002BAC27 /* GLUT.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E3FECB94183D765E002BAC27 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E3C5BEFE183D77DE0053F49B /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		E3C5BEFF183D77DE0053F49B /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		E3C5BF01183D78030053F49B /* Matrix4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix4.cpp; sourceTree = "<group>"; };
+		E3C5BF02183D78030053F49B /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
+		E3C5BF03183D78030053F49B /* Vector4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector4.cpp; sourceTree = "<group>"; };
+		E3C5BF04183D78030053F49B /* Vector4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector4.h; sourceTree = "<group>"; };
+		E3C5BF07183D782E0053F49B /* StaticCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticCamera.cpp; sourceTree = "<group>"; };
+		E3C5BF08183D782E0053F49B /* StaticCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticCamera.h; sourceTree = "<group>"; };
+		E3FECB96183D765E002BAC27 /* philosopher-king */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "philosopher-king"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3FECBA2183D76F0002BAC27 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		E3FECBA4183D76F4002BAC27 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E3FECB93183D765E002BAC27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3FECBA5183D76F4002BAC27 /* GLUT.framework in Frameworks */,
+				E3FECBA3183D76F0002BAC27 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E3FECB8D183D765E002BAC27 = {
+			isa = PBXGroup;
+			children = (
+				E3FECB98183D765E002BAC27 /* philosopher-king */,
+				E3FECBA6183D76F9002BAC27 /* Frameworks */,
+				E3FECB97183D765E002BAC27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3FECB97183D765E002BAC27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3FECB96183D765E002BAC27 /* philosopher-king */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3FECB98183D765E002BAC27 /* philosopher-king */ = {
+			isa = PBXGroup;
+			children = (
+				E3C5BF07183D782E0053F49B /* StaticCamera.cpp */,
+				E3C5BF08183D782E0053F49B /* StaticCamera.h */,
+				E3C5BF01183D78030053F49B /* Matrix4.cpp */,
+				E3C5BF02183D78030053F49B /* Matrix4.h */,
+				E3C5BF03183D78030053F49B /* Vector4.cpp */,
+				E3C5BF04183D78030053F49B /* Vector4.h */,
+				E3C5BEFE183D77DE0053F49B /* Window.cpp */,
+				E3C5BEFF183D77DE0053F49B /* Window.h */,
+			);
+			path = "philosopher-king";
+			sourceTree = "<group>";
+		};
+		E3FECBA6183D76F9002BAC27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3FECBA4183D76F4002BAC27 /* GLUT.framework */,
+				E3FECBA2183D76F0002BAC27 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E3FECB95183D765E002BAC27 /* philosopher-king */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3FECB9F183D765E002BAC27 /* Build configuration list for PBXNativeTarget "philosopher-king" */;
+			buildPhases = (
+				E3FECB92183D765E002BAC27 /* Sources */,
+				E3FECB93183D765E002BAC27 /* Frameworks */,
+				E3FECB94183D765E002BAC27 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "philosopher-king";
+			productName = "philosopher-king";
+			productReference = E3FECB96183D765E002BAC27 /* philosopher-king */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3FECB8E183D765E002BAC27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Jacob Maskiewicz";
+			};
+			buildConfigurationList = E3FECB91183D765E002BAC27 /* Build configuration list for PBXProject "philosopher-king" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E3FECB8D183D765E002BAC27;
+			productRefGroup = E3FECB97183D765E002BAC27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E3FECB95183D765E002BAC27 /* philosopher-king */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E3FECB92183D765E002BAC27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3C5BF09183D782E0053F49B /* StaticCamera.cpp in Sources */,
+				E3C5BF05183D78030053F49B /* Matrix4.cpp in Sources */,
+				E3C5BF00183D77DE0053F49B /* Window.cpp in Sources */,
+				E3C5BF06183D78030053F49B /* Vector4.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E3FECB9D183D765E002BAC27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E3FECB9E183D765E002BAC27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E3FECBA0183D765E002BAC27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E3FECBA1183D765E002BAC27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3FECB91183D765E002BAC27 /* Build configuration list for PBXProject "philosopher-king" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3FECB9D183D765E002BAC27 /* Debug */,
+				E3FECB9E183D765E002BAC27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3FECB9F183D765E002BAC27 /* Build configuration list for PBXNativeTarget "philosopher-king" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3FECBA0183D765E002BAC27 /* Debug */,
+				E3FECBA1183D765E002BAC27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3FECB8E183D765E002BAC27 /* Project object */;
+}

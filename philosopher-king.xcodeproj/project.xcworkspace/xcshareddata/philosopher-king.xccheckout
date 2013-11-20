@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>222FB888-F331-414C-8C8D-9F357974E1B4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>philosopher-king</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C370BD9D-77E6-4102-9C73-7857DBCC7DFC</key>
+		<string>ssh://github.com/jakemask/philosopher-king.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>philosopher-king/philosopher-king.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C370BD9D-77E6-4102-9C73-7857DBCC7DFC</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/jakemask/philosopher-king.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C370BD9D-77E6-4102-9C73-7857DBCC7DFC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C370BD9D-77E6-4102-9C73-7857DBCC7DFC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>final</string>
+		</dict>
+	</array>
+</dict>
+</plist>
