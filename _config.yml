@@ -1,6 +1,6 @@
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title 
+permalink: /:year/:month/:day/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 pygments: true
@@ -11,7 +11,7 @@ pygments: true
 title : The Philosopher King 
 tagline: CSE 167 Final Project
 author :
-  name : Name Lastname
+  name : Jake Maskiewicz 
   email : blah@email.test
   github : username
   twitter : username
@@ -82,7 +82,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : philosopher-king 
   # livefyre :
   #   site_id : 123
   # intensedebate :
