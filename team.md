@@ -8,6 +8,12 @@ group: navigation
 
 ### Zach Johnson (The Philosopher King himself)
 
+Currently working on Google Glass Integration
+
 ### Jake Maskiewicz
 
+Currently working on Procedural Terrain
+
 ### Amy Chandler
+
+Currently working on Shape Grammar

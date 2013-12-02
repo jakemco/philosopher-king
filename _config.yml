@@ -8,14 +8,13 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : The Philosopher King 
+title : Team Jazz 
 tagline: CSE 167 Final Project
 author :
   name : Jake Maskiewicz 
   email : blah@email.test
-  github : username
-  twitter : username
-  feedburner : feedname
+  github : jakemask
+  twitter : jakemask
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
