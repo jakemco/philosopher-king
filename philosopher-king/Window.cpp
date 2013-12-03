@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Jacob Maskiewicz. All rights reserved.
 //
 
+#include <cstdlib>
+
 #ifdef WIN32
   #include <GL/glut.h>
 #else
@@ -16,6 +18,7 @@
 #include <chrono>
 #include <cmath>
 #include <iostream>
+#include <algorithm>
 
 #include "Window.h"
 
@@ -41,7 +44,7 @@ float Window::top = 10;
 float Window::bottom = -10;
 float Window::near = 10;
 float Window::far = 1000;
-StaticCamera Window::camera(Vector4(0,0,10,1),Vector4(0,0,0,1),Vector4(0,1,0,0));
+MoveableCamera Window::camera(Vector4(0,0,10,1),Vector4(0,0,0,1),Vector4(0,1,0,0));
 
 //-----------------------------------------//
 
@@ -96,6 +99,8 @@ void Window::displayCallback() {
     glLoadMatrixd(camera.getMatrix().getPointer());
     
     //TODO - Draw things
+	glColor3f(1.0, 1.0, 1.0);
+	glutSolidSphere(5.0, 15.0, 15.0);
 
 	glFlush();
 	glutSwapBuffers();
@@ -105,10 +110,44 @@ void Window::displayCallback() {
 
 void Window::keyboardCallback(unsigned char c, int x, int y) {
     switch (c) {
-        case ' ':
-            std::cout << "Example" << std::endl;
+        case 'w':
+			camera.moveForward(0.5);
             break;
+		case 'a':
+			camera.moveRight(-0.5);
+			break;
+		case 's':
+			camera.moveForward(-0.5);
+			break;
+		case 'd':
+			camera.moveRight(0.5);
+			break;
     }
+}
+
+void Window::passiveCallback(int x, int y) {
+	int mouseX = x - Window::width / 2;
+	int mouseY = (Window::height - y) - Window::height / 2;
+
+	if (mouseX == 0 && mouseY == 0) return;
+
+	float fovY = 45.0;
+	float fovX = 45.0;
+
+	float propX = (float) mouseX / (float)(Window::width / 2);
+	float propY = (float) mouseY / (float)(Window::height / 2);
+
+	float degX = propX * fovX;
+	float degY = propY * fovY;
+
+	std::cout << mouseX << "," << mouseY << std::endl;
+	std::cout << "Go Right " << degX << " degrees." << std::endl;
+
+	camera.lookLeft(-degX);
+	camera.lookUp(degY);
+
+	/* Move mouse back to center */
+	glutWarpPointer(Window::width / 2, Window::height / 2);
 }
 
 void Window::mouseCallback(int button, int state, int x, int y) {
@@ -127,6 +166,7 @@ void Window::mouseCallback(int button, int state, int x, int y) {
 }
 
 void Window::motionCallback(int x, int y) {
+	/*
 	if (Window::dragging) {
 		Vector4 v2;
 		Vector4 v1;
@@ -166,6 +206,7 @@ void Window::motionCallback(int x, int y) {
     
 	mouseX = x;
 	mouseY = y;
+	*/
 }
 
 //-----------------------------------------//
@@ -181,7 +222,7 @@ int main(int argc, char * argv[])
     
     // make the window with size and title
 	glutInitWindowSize(Window::width, Window::height);
-	glutCreateWindow("Robots for CSE167");
+	glutCreateWindow("Final Project for CSE167");
     
 	glEnable(GL_DEPTH_TEST);            	      // enable depth buffering
 	glClear(GL_DEPTH_BUFFER_BIT);       	      // clear depth buffer
@@ -203,8 +244,9 @@ int main(int argc, char * argv[])
     
     glutKeyboardFunc(Window::keyboardCallback);
     
-    glutMouseFunc(Window::mouseCallback);
-    glutMotionFunc(Window::motionCallback);
+    //glutMouseFunc(Window::mouseCallback);
+	glutPassiveMotionFunc(Window::passiveCallback);
+    glutMotionFunc(Window::passiveCallback);
     
 	glutMainLoop();
 	return 0;

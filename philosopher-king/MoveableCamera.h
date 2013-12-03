@@ -17,8 +17,7 @@ private:
 
 public:
 	MoveableCamera(const Vector4& e, const Vector4& d, const Vector4& up);
-	//54 06
-	//146
+
 	void moveForward(float distance);
 	void moveRight(float distance);
 

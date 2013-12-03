@@ -1,5 +1,7 @@
-#include "MoveableCamera.h"
+#define _USE_MATH_DEFINES
+#include <cmath>
 
+#include "MoveableCamera.h"
 
 MoveableCamera::MoveableCamera(const Vector4& e, const Vector4& d, const Vector4& up)
 {
@@ -29,7 +31,7 @@ void MoveableCamera::moveRight(float distance) {
 void MoveableCamera::lookLeft(float degree) {
 
 	this->d -= e;
-	this->d = Matrix4::rotate(this->up, degree) * this->d;
+	this->d = Matrix4::rotate(this->up, degree * M_PI / 180.0) * this->d;
 	this->d += e;
 
 	this->update();
@@ -37,7 +39,7 @@ void MoveableCamera::lookLeft(float degree) {
 
 void MoveableCamera::lookUp(float degree) {
 	this->d -= e;
-	this->d = Matrix4::rotate(this->right, degree) * this->d;
+	this->d = Matrix4::rotate(this->right, degree * M_PI / 180.0) * this->d;
 	this->d += e;
 
 	this->update();

@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "StaticCamera.h"
+#include "MoveableCamera.h"
 #include "Matrix4.h"
 
 #define TRACKBALL_SIZE 1.3f
@@ -23,7 +23,7 @@ public:
     
     static float left,right,top,bottom,near,far;
     
-    static StaticCamera camera;
+    static MoveableCamera camera;
         
     static void setupWorld();
     
@@ -33,6 +33,7 @@ public:
     
     static void keyboardCallback(unsigned char c, int x, int y);
     
+	static void passiveCallback(int x, int y);
     static void mouseCallback(int button, int state, int x, int y);
     static void motionCallback(int x, int y);
 };
