@@ -81,7 +81,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : philosopher-king 
+      short_name : jakemask 
   # livefyre :
   #   site_id : 123
   # intensedebate :
