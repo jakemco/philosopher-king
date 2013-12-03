@@ -79,17 +79,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MoveableCamera.cpp" />
-    <ClCompile Include="philosopher-king\Matrix4.cpp" />
-    <ClCompile Include="philosopher-king\StaticCamera.cpp" />
-    <ClCompile Include="philosopher-king\Vector4.cpp" />
-    <ClCompile Include="philosopher-king\Window.cpp" />
+    <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="StaticCamera.cpp" />
+    <ClCompile Include="Vector4.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MoveableCamera.h" />
-    <ClInclude Include="philosopher-king\Matrix4.h" />
-    <ClInclude Include="philosopher-king\StaticCamera.h" />
-    <ClInclude Include="philosopher-king\Vector4.h" />
-    <ClInclude Include="philosopher-king\Window.h" />
+    <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="StaticCamera.h" />
+    <ClInclude Include="Vector4.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
