@@ -15,6 +15,8 @@
 
 class Window {
 public:
+	static int id;
+
     static int width, height;
     
     static int mouseX, mouseY;

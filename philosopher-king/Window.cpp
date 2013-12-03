@@ -29,6 +29,8 @@
 
 //=========================================//
 
+int Window::id;
+
 int Window::width = 512;
 int Window::height = 512;
 
@@ -121,6 +123,10 @@ void Window::keyboardCallback(unsigned char c, int x, int y) {
 			break;
 		case 'd':
 			camera.moveRight(0.5);
+			break;
+		case 'q':
+			glutDestroyWindow(Window::id);
+			exit(0);
 			break;
     }
 }
@@ -222,7 +228,7 @@ int main(int argc, char * argv[])
     
     // make the window with size and title
 	glutInitWindowSize(Window::width, Window::height);
-	glutCreateWindow("Final Project for CSE167");
+	Window::id = glutCreateWindow("Final Project for CSE167");
     
 	glEnable(GL_DEPTH_TEST);            	      // enable depth buffering
 	glClear(GL_DEPTH_BUFFER_BIT);       	      // clear depth buffer
