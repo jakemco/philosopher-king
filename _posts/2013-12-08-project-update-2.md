@@ -29,3 +29,12 @@ As of now, we have decided on the following technical features:
  - modeling shapes for use with the shape grammar (x-wing, y-wing, a-wing)
  - glass control
 
+### Screenshots
+
+Trench:
+![image of trench](/assets/trench_screenshot.jpg)
+
+Models:
+![xwing](/assets/xwing_basic.png)
+![ywing](/assets/ywing_basic.png)
+![awing](/assets/awing_basic.png)
