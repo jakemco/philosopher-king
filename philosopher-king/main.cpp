@@ -7,10 +7,13 @@
 //
 #include <cstdlib>
 
+#define SHOW_FPS
+
 #include "Window.h"
 
 #include "DeathStarTrench.h"
 #include "FlightControls.h"
+
 
 int main(int argc, char* argv[]) {
     Window::input = new FlightControls();

@@ -19,7 +19,7 @@
 
 #include "Ship.h"
 
-const float Ship::SPEED = 5.0f;
+const float Ship::SPEED = 50.0f;
 
 Ship::Ship() {
 	this->position = Vector4(0, 0, 0, 1);
@@ -41,6 +41,8 @@ void Ship::render() {
 	
 	glTranslatef(this->position.x(), this->position.y(), this->position.z());
     glRotatef(this->angle * 180.0 / M_PI, this->rotate.x(), this->rotate.y(), this->rotate.z());
+    
+    glColor3f(1,1,1);
 	glutSolidCube(1);
     
 	glPopMatrix();

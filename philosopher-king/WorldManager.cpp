@@ -16,10 +16,12 @@
 
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 #include "WorldManager.h"
 
 #define FPS(X) (1000/X)
+#define SHOW_FPS
 
 void WorldManager::idleCallback() {
 	typedef std::chrono::milliseconds milliseconds;
@@ -35,7 +37,7 @@ void WorldManager::idleCallback() {
     
     this->update(dt/1000.0f);
     
-#ifdef PRINT_FPS
+#ifdef SHOW_FPS
     std::cout << "fps: "<< 1000.0f / dt << std::endl;
 #endif
 }
