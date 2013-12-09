@@ -32,9 +32,9 @@ As of now, we have decided on the following technical features:
 ### Screenshots
 
 Trench:
-![image of trench](/assets/trench_screenshot.jpg)
+![image of trench](assets/trench_screenshot.jpg)
 
 Models:
-![xwing](/assets/xwing_basic.png)
-![ywing](/assets/ywing_basic.png)
-![awing](/assets/awing_basic.png)
+![xwing](assets/xwing_basic.png)
+![ywing](assets/ywing_basic.png)
+![awing](assets/awing_basic.png)
