@@ -81,3 +81,11 @@ packages/
 
 #Test files
 *.testsettings
+
+#blender backups
+*.blend1
+*.blend2
+
+#obj files in resources
+/resources/models/objects/*.mtl
+!/resources/models/objects/*.obj
