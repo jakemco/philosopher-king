@@ -1,2 +1,7 @@
 _site/*
 *.swp
+resources/*
+philosopher-king/*
+Debug/*
+*.sdf
+*.suo
