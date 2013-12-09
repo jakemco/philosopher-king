@@ -3,8 +3,8 @@
 
 #include "MoveableCamera.h"
 
-MoveableCamera::MoveableCamera(const Vector4& e, const Vector4& d, const Vector4& up)
-{
+MoveableCamera::MoveableCamera(const Vector4& e, const Vector4& d, const Vector4& up) {
+    
 	this->e = e;
 	this->d = d;
 	this->up = up;
@@ -43,6 +43,18 @@ void MoveableCamera::lookUp(float degree) {
 	this->d += e;
 
 	this->update();
+}
+
+void MoveableCamera::setPosition(const Vector4& position) {
+    Vector4 delta = d-e;
+    e = position;
+    d = e + delta;
+    
+    this->update();
+}
+
+Vector4 MoveableCamera::getPosition() {
+    return e;
 }
 
 void MoveableCamera::update() {

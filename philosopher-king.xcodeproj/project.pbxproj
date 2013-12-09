@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E317299918551ABA00EDA005 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299518551ABA00EDA005 /* InputManager.cpp */; };
+		E317299A18551ABA00EDA005 /* MoveableCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299718551ABA00EDA005 /* MoveableCamera.cpp */; };
+		E317299D18551B2400EDA005 /* FPSControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299B18551B2400EDA005 /* FPSControls.cpp */; };
+		E31729A0185522AE00EDA005 /* WorldManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299E185522AE00EDA005 /* WorldManager.cpp */; };
+		E31729A5185525B600EDA005 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E31729A3185525B600EDA005 /* Camera.cpp */; };
+		E31729A918552CB900EDA005 /* DeathStarTrench.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E31729A718552CB900EDA005 /* DeathStarTrench.cpp */; };
+		E31729AC18552CC800EDA005 /* FlightControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E31729AA18552CC800EDA005 /* FlightControls.cpp */; };
+		E31729AE18552D5F00EDA005 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E31729AD18552D5F00EDA005 /* main.cpp */; };
+		E31729B118553CC300EDA005 /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E31729AF18553CC300EDA005 /* Ship.cpp */; };
 		E3C5BF00183D77DE0053F49B /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BEFE183D77DE0053F49B /* Window.cpp */; };
 		E3C5BF05183D78030053F49B /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BF01183D78030053F49B /* Matrix4.cpp */; };
 		E3C5BF06183D78030053F49B /* Vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BF03183D78030053F49B /* Vector4.cpp */; };
@@ -28,12 +37,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E3C5BEFE183D77DE0053F49B /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
-		E3C5BEFF183D77DE0053F49B /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
-		E3C5BF01183D78030053F49B /* Matrix4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix4.cpp; sourceTree = "<group>"; };
-		E3C5BF02183D78030053F49B /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
-		E3C5BF03183D78030053F49B /* Vector4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector4.cpp; sourceTree = "<group>"; };
-		E3C5BF04183D78030053F49B /* Vector4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector4.h; sourceTree = "<group>"; };
+		E317299518551ABA00EDA005 /* InputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputManager.cpp; path = "philosopher-king/InputManager.cpp"; sourceTree = "<group>"; };
+		E317299618551ABA00EDA005 /* InputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputManager.h; path = "philosopher-king/InputManager.h"; sourceTree = "<group>"; };
+		E317299718551ABA00EDA005 /* MoveableCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveableCamera.cpp; sourceTree = "<group>"; };
+		E317299818551ABA00EDA005 /* MoveableCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveableCamera.h; sourceTree = "<group>"; };
+		E317299B18551B2400EDA005 /* FPSControls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPSControls.cpp; sourceTree = "<group>"; };
+		E317299C18551B2400EDA005 /* FPSControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSControls.h; sourceTree = "<group>"; };
+		E317299E185522AE00EDA005 /* WorldManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WorldManager.cpp; path = "philosopher-king/WorldManager.cpp"; sourceTree = "<group>"; };
+		E317299F185522AE00EDA005 /* WorldManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorldManager.h; path = "philosopher-king/WorldManager.h"; sourceTree = "<group>"; };
+		E31729A3185525B600EDA005 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = "/Users/jakem/Code/cs/cse167/final/philosopher-king/Camera.cpp"; sourceTree = "<absolute>"; };
+		E31729A4185525B600EDA005 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = "philosopher-king/Camera.h"; sourceTree = "<group>"; };
+		E31729A718552CB900EDA005 /* DeathStarTrench.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeathStarTrench.cpp; sourceTree = "<group>"; };
+		E31729A818552CB900EDA005 /* DeathStarTrench.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathStarTrench.h; sourceTree = "<group>"; };
+		E31729AA18552CC800EDA005 /* FlightControls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlightControls.cpp; sourceTree = "<group>"; };
+		E31729AB18552CC800EDA005 /* FlightControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightControls.h; sourceTree = "<group>"; };
+		E31729AD18552D5F00EDA005 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E31729AF18553CC300EDA005 /* Ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ship.cpp; sourceTree = "<group>"; };
+		E31729B018553CC300EDA005 /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ship.h; sourceTree = "<group>"; };
+		E3C5BEFE183D77DE0053F49B /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = "philosopher-king/Window.cpp"; sourceTree = "<group>"; };
+		E3C5BEFF183D77DE0053F49B /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Window.h; path = "philosopher-king/Window.h"; sourceTree = "<group>"; };
+		E3C5BF01183D78030053F49B /* Matrix4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Matrix4.cpp; path = "philosopher-king/Matrix4.cpp"; sourceTree = "<group>"; };
+		E3C5BF02183D78030053F49B /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matrix4.h; path = "philosopher-king/Matrix4.h"; sourceTree = "<group>"; };
+		E3C5BF03183D78030053F49B /* Vector4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector4.cpp; path = "philosopher-king/Vector4.cpp"; sourceTree = "<group>"; };
+		E3C5BF04183D78030053F49B /* Vector4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector4.h; path = "philosopher-king/Vector4.h"; sourceTree = "<group>"; };
 		E3C5BF07183D782E0053F49B /* StaticCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticCamera.cpp; sourceTree = "<group>"; };
 		E3C5BF08183D782E0053F49B /* StaticCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticCamera.h; sourceTree = "<group>"; };
 		E3FECB96183D765E002BAC27 /* philosopher-king */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "philosopher-king"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,9 +80,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E31729A11855230100EDA005 /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				E3C5BEFE183D77DE0053F49B /* Window.cpp */,
+				E3C5BEFF183D77DE0053F49B /* Window.h */,
+				E317299518551ABA00EDA005 /* InputManager.cpp */,
+				E317299618551ABA00EDA005 /* InputManager.h */,
+				E317299E185522AE00EDA005 /* WorldManager.cpp */,
+				E317299F185522AE00EDA005 /* WorldManager.h */,
+				E31729A3185525B600EDA005 /* Camera.cpp */,
+				E31729A4185525B600EDA005 /* Camera.h */,
+				E31729A21855259900EDA005 /* util */,
+			);
+			name = engine;
+			sourceTree = "<group>";
+		};
+		E31729A21855259900EDA005 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				E3C5BF01183D78030053F49B /* Matrix4.cpp */,
+				E3C5BF02183D78030053F49B /* Matrix4.h */,
+				E3C5BF03183D78030053F49B /* Vector4.cpp */,
+				E3C5BF04183D78030053F49B /* Vector4.h */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
 		E3FECB8D183D765E002BAC27 = {
 			isa = PBXGroup;
 			children = (
+				E31729A11855230100EDA005 /* engine */,
 				E3FECB98183D765E002BAC27 /* philosopher-king */,
 				E3FECBA6183D76F9002BAC27 /* Frameworks */,
 				E3FECB97183D765E002BAC27 /* Products */,
@@ -74,14 +128,19 @@
 		E3FECB98183D765E002BAC27 /* philosopher-king */ = {
 			isa = PBXGroup;
 			children = (
+				E317299718551ABA00EDA005 /* MoveableCamera.cpp */,
+				E317299818551ABA00EDA005 /* MoveableCamera.h */,
 				E3C5BF07183D782E0053F49B /* StaticCamera.cpp */,
 				E3C5BF08183D782E0053F49B /* StaticCamera.h */,
-				E3C5BF01183D78030053F49B /* Matrix4.cpp */,
-				E3C5BF02183D78030053F49B /* Matrix4.h */,
-				E3C5BF03183D78030053F49B /* Vector4.cpp */,
-				E3C5BF04183D78030053F49B /* Vector4.h */,
-				E3C5BEFE183D77DE0053F49B /* Window.cpp */,
-				E3C5BEFF183D77DE0053F49B /* Window.h */,
+				E317299B18551B2400EDA005 /* FPSControls.cpp */,
+				E317299C18551B2400EDA005 /* FPSControls.h */,
+				E31729A718552CB900EDA005 /* DeathStarTrench.cpp */,
+				E31729A818552CB900EDA005 /* DeathStarTrench.h */,
+				E31729AA18552CC800EDA005 /* FlightControls.cpp */,
+				E31729AB18552CC800EDA005 /* FlightControls.h */,
+				E31729AD18552D5F00EDA005 /* main.cpp */,
+				E31729AF18553CC300EDA005 /* Ship.cpp */,
+				E31729B018553CC300EDA005 /* Ship.h */,
 			);
 			path = "philosopher-king";
 			sourceTree = "<group>";
@@ -146,10 +205,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E31729B118553CC300EDA005 /* Ship.cpp in Sources */,
+				E31729A918552CB900EDA005 /* DeathStarTrench.cpp in Sources */,
 				E3C5BF09183D782E0053F49B /* StaticCamera.cpp in Sources */,
+				E31729AE18552D5F00EDA005 /* main.cpp in Sources */,
 				E3C5BF05183D78030053F49B /* Matrix4.cpp in Sources */,
 				E3C5BF00183D77DE0053F49B /* Window.cpp in Sources */,
+				E317299A18551ABA00EDA005 /* MoveableCamera.cpp in Sources */,
+				E31729A5185525B600EDA005 /* Camera.cpp in Sources */,
+				E31729A0185522AE00EDA005 /* WorldManager.cpp in Sources */,
 				E3C5BF06183D78030053F49B /* Vector4.cpp in Sources */,
+				E31729AC18552CC800EDA005 /* FlightControls.cpp in Sources */,
+				E317299D18551B2400EDA005 /* FPSControls.cpp in Sources */,
+				E317299918551ABA00EDA005 /* InputManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,14 +295,18 @@
 		E3FECBA0183D765E002BAC27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-deprecated-declarations";
 			};
 			name = Debug;
 		};
 		E3FECBA1183D765E002BAC27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-deprecated-declarations";
 			};
 			name = Release;
 		};

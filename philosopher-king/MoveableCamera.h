@@ -1,10 +1,12 @@
 #pragma once
 
+#include "camera.h"
+
 #include "Vector4.h"
 #include "Matrix4.h"
 
-class MoveableCamera
-{
+class MoveableCamera : public Camera {
+    
 private:
 	Matrix4 matrix;
 	
@@ -23,8 +25,11 @@ public:
 
 	void lookLeft(float degrees);
 	void lookUp(float degrees);
+    
+    void setPosition(const Vector4& position);
+    Vector4 getPosition();
 
 	void update();
-	Matrix4& getMatrix();
+	virtual Matrix4& getMatrix();
 };
 

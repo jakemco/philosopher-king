@@ -8,10 +8,8 @@
 
 #pragma once
 
-#include "MoveableCamera.h"
-#include "Matrix4.h"
-
-#define TRACKBALL_SIZE 1.3f
+#include "InputManager.h"
+#include "WorldManager.h"
 
 class Window {
 public:
@@ -19,23 +17,10 @@ public:
 
     static int width, height;
     
-    static int mouseX, mouseY;
-    static bool dragging;
-    static bool zooming;
+    static InputManager* input;
+    static WorldManager* world;
     
-    static float left,right,top,bottom,near,far;
-    
-    static MoveableCamera camera;
-        
-    static void setupWorld();
-    
-    static void idleCallback();
+    static int main(int argc, char* argv[]);
 	static void reshapeCallback(int w, int h);
-	static void displayCallback();
-    
-    static void keyboardCallback(unsigned char c, int x, int y);
-    
-	static void passiveCallback(int x, int y);
-    static void mouseCallback(int button, int state, int x, int y);
-    static void motionCallback(int x, int y);
+    static void quit();
 };
