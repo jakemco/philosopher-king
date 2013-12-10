@@ -85,10 +85,6 @@ int Window::main(int argc, char * argv[])
 	glShadeModel(GL_SMOOTH);             	      // set shading to smooth
 	glMatrixMode(GL_PROJECTION);
     
-	// Generate light source:
-	glEnable(GL_LIGHTING);
-    //glDisable(GL_LIGHTING);
-    
     float specular[]  = {1.0, 1.0, 1.0, 1.0};
     float shininess[] = {100.0};
     float position[]  = {0.0, 10.0, 1.0, 0.0};
