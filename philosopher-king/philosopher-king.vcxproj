@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Building.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DeathStarTrench.cpp" />
     <ClCompile Include="FlightControls.cpp" />
@@ -86,13 +87,16 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveableCamera.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="RandomTrench.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="StaticCamera.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector4.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Building.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DeathStarTrench.h" />
     <ClInclude Include="FlightControls.h" />
@@ -100,8 +104,10 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MoveableCamera.h" />
     <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="RandomTrench.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="StaticCamera.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WorldManager.h" />

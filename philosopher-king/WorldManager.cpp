@@ -21,7 +21,6 @@
 #include "WorldManager.h"
 
 #define FPS(X) (1000/X)
-#define SHOW_FPS
 
 void WorldManager::idleCallback() {
 	typedef std::chrono::milliseconds milliseconds;

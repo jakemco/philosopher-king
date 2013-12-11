@@ -51,7 +51,7 @@ void Window::reshapeCallback(int w, int h) {
     // adjust viewing frustrum
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-    gluPerspective(45.0f, (float)w/(float)h, 10, 1000);
+    gluPerspective(45.0f, (float)w/(float)h, 5, 1000);
     
     // slide it all back
 	//glTranslatef(0, 0, -20);

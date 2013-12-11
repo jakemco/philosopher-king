@@ -13,6 +13,7 @@
 #include "FlightControls.h"
 #include "Ship.h"
 #include "MoveableCamera.h"
+#include "RandomTrench.h"
 
 class DeathStarTrench : public WorldManager {
     
@@ -20,6 +21,7 @@ private:
     MoveableCamera* mCamera;
     FlightControls* controls;
     Ship ship;
+	RandomTrench trench;
     
     float trenchWidth, trenchHeight;
     

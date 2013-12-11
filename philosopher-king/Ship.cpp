@@ -28,7 +28,7 @@ Ship::Ship() {
 
 void Ship::update(float dt, float x, float y) {
     
-	Vector4 destination(x, y, position.z() - SPEED, 1.0f);
+	Vector4 destination(position.x() + x, position.y() + y, position.z() - SPEED, 1.0f);
 	Vector4 dir = Vector4::normalize(destination - position)*SPEED*dt;
 
 	this->rotate = Vector4::cross(Vector4(0, 0, -1), dir);
