@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <chrono>
 
 #include "Building.h"
 #include "Ship.h"
@@ -14,6 +15,9 @@ private:
 	float size;
 
 	std::map<int,Building*> buildings;
+
+	bool above;
+	std::chrono::time_point<std::chrono::system_clock> above_t;
 
 public:
 	RandomTrench(float size);
