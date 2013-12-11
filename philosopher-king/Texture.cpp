@@ -83,26 +83,16 @@ void Texture::loadPPM(const char* filename, int index)
     }
 
     glGenTextures(1, &textures[index]);
-    glBindTexture(GL_TEXTURE_2D, textures[index]);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, width[index], height[index], 0, GL_RGB, GL_UNSIGNED_BYTE, data[index]);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 }
 
 // load image file into texture object
 void Texture::loadTexture(int index)
 {
-    int twidth, theight;   // texture width/height [pixels]
-    unsigned char* tdata;  // texture pixel data
-
-    tdata = data[index];
-    twidth = width[index];
-    theight = height[index];
-
     // Load image file
-    if (tdata == NULL) return;
+    if (data[index] == NULL) return;
 
-    glGenTextures(1, &textures[index]); 
     glBindTexture(GL_TEXTURE_2D, textures[index]);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, twidth, theight, 0, GL_RGB, GL_UNSIGNED_BYTE, tdata);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, width[index], height[index], 0, GL_RGB, GL_UNSIGNED_BYTE, data[index]);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
 }
