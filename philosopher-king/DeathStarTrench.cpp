@@ -68,20 +68,30 @@ void DeathStarTrench::render() {
 		glColor3f((float)rand() /(float)RAND_MAX, (float)rand() /(float)RAND_MAX, (float)rand() /(float)RAND_MAX);
         glBegin(GL_QUAD_STRIP);
 
+		glNormal3f(0, 1, 0);
+
 		glVertex3f(-100, y, depth);
 		glVertex3f(-100, y, depth - 1);
         
         glVertex3f(-x, y, depth);
         glVertex3f(-x, y, depth-1);
         
+		glNormal3f(1, 0, 0);
+
         glVertex3f(-x, -y, depth);
         glVertex3f(-x, -y, depth-1);
         
+		glNormal3f(0, 1, 0);
+
         glVertex3f(x, -y, depth);
         glVertex3f(x, -y, depth-1);
         
+		glNormal3f(-1, 0, 0);
+
         glVertex3f(x, y, depth);
         glVertex3f(x, y, depth-1);
+
+		glNormal3f(0, 1, 0);
 
 		glVertex3f(100, y, depth);
 		glVertex3f(100, y, depth - 1);
