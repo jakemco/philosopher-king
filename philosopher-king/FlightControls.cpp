@@ -25,6 +25,9 @@
 FlightControls::FlightControls() : InputManager() {
 	this->xProp = 0;
 	this->yProp = 0;
+	this->useGlass = false;
+	this->glassOverride = new GlassControls();
+	this->glassOverride->connectToGlass();
 }
 
 void FlightControls::passiveMotionCallback(int x, int y) {
@@ -56,8 +59,23 @@ void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
     case '2': ShapeGrammar::nextEnginePart(); break;
     case '3': ShapeGrammar::nextFrontPart(); break;
     case '4': ShapeGrammar::nextWingPart(); break;
+
+	case 'g': useGlass = !useGlass; break;
     }
 }
 
-float FlightControls::getX() { return xProp; }
-float FlightControls::getY() { return yProp; }
+float FlightControls::getX() { 
+	if (useGlass) {
+		return this->glassOverride->getInterpolatedX();
+	}
+
+	return xProp; 
+}
+
+float FlightControls::getY() { 
+	if (useGlass) {
+		return this->glassOverride->getInterpolatedY();
+	}
+
+	return yProp; 
+}

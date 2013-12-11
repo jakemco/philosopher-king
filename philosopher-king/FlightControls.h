@@ -9,10 +9,13 @@
 #pragma once
 
 #include "InputManager.h"
+#include "GlassControls.h"
 
 class FlightControls : public InputManager {
 private:
     float xProp, yProp;
+	GlassControls *glassOverride;
+	bool useGlass;
     
 public:
 

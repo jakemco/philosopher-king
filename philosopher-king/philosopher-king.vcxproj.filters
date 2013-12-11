@@ -74,6 +74,8 @@
     </ClCompile>
     <ClCompile Include="ShapeGrammar.cpp">
       <Filter>Engine</Filter>
+    <ClCompile Include="GlassControls.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +132,8 @@
     </ClInclude>
     <ClInclude Include="ShapeGrammar.h">
       <Filter>Engine</Filter>
+    <ClInclude Include="GlassControls.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

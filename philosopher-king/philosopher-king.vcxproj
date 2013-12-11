@@ -58,6 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -84,6 +85,7 @@
     <ClCompile Include="DeathStarTrench.cpp" />
     <ClCompile Include="FlightControls.cpp" />
     <ClCompile Include="FPSControls.cpp" />
+    <ClCompile Include="GlassControls.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveableCamera.cpp" />
@@ -105,6 +107,7 @@
     <ClInclude Include="DeathStarTrench.h" />
     <ClInclude Include="FlightControls.h" />
     <ClInclude Include="FPSControls.h" />
+    <ClInclude Include="GlassControls.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MoveableCamera.h" />
     <ClInclude Include="Matrix4.h" />
