@@ -25,13 +25,13 @@
 void WorldManager::idleCallback() {
 	typedef std::chrono::milliseconds milliseconds;
     
-    auto startTime = std::chrono::system_clock::now();
+    auto startTime = std::chrono::steady_clock::now();
     
 	this->displayCallback();
     
 	std::this_thread::sleep_until(startTime + milliseconds(FPS(60)));
     
-    auto timeElapsed = std::chrono::system_clock::now() - startTime;
+    auto timeElapsed = std::chrono::steady_clock::now() - startTime;
     float dt = std::chrono::duration_cast<milliseconds>(timeElapsed).count();
     
     this->update(dt/1000.0f);

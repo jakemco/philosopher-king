@@ -74,6 +74,18 @@ void DeathStarTrench::render() {
         float fore = (depth % TEX_SIZE * 1.0) / TEX_SIZE;
         float back = (depth % TEX_SIZE + 1.0) / TEX_SIZE;
 
+        for (float j = -100; j < -x; j+=TEX_SIZE) {
+            float j2 = fmin(j + TEX_SIZE, -x);
+            glTexCoord2f(0, fore);
+            glVertex3f(j, y, depth);
+            glTexCoord2f(0, back);
+            glVertex3f(j, y, depth - 1);
+            glTexCoord2f(1, fore);
+            glVertex3f(j2, y, depth);
+            glTexCoord2f(1, back);
+            glVertex3f(j2, y, depth - 1);
+        }
+
         glTexCoord2f(0, fore);
         glVertex3f(-x, y, depth);
         glTexCoord2f(0, back);
@@ -100,6 +112,18 @@ void DeathStarTrench::render() {
         glVertex3f(x, y, depth);
         glTexCoord2f(1, back);
         glVertex3f(x, y, depth - 1);
+
+        for (float j = x; j < 100; j += TEX_SIZE) {
+            float j2 = fmin(j + TEX_SIZE, 100);
+            glTexCoord2f(0, fore);
+            glVertex3f(j, y, depth);
+            glTexCoord2f(0, back);
+            glVertex3f(j, y, depth - 1);
+            glTexCoord2f(1, fore);
+            glVertex3f(j2, y, depth);
+            glTexCoord2f(1, back);
+            glVertex3f(j2, y, depth - 1);
+        }
 
         glEnd();
     }

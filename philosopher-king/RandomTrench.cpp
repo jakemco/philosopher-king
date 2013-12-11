@@ -76,13 +76,19 @@ bool RandomTrench::collision(const Ship& ship) {
 		}
 	}
 
-	return box.custom([this](const Vector4& min, const Vector4& max){
+	return box.custom([&](const Vector4& min, const Vector4& max){
+		if (min.y() > size / 2) {
+			typedef std::chrono::seconds seconds;
+			auto duration = std::chrono::steady_clock::now() - above_t;
 
-		if (min.x() < -size / 2) return true;
-		if (max.x() > size / 2) return true;
-		if (min.y() < -size / 2) return true;
-		if (max.y() > size) return true;
+			if ( std::chrono::duration_cast<seconds>(duration).count() > 1) return true;
+		} else {
+			above_t = std::chrono::steady_clock::now();
 
+			if (min.x() < -size / 2) return true;
+			if (max.x() > size / 2) return true;
+			if (min.y() < -size / 2) return true;
+		}
 		return false;
 	});
 
