@@ -22,8 +22,10 @@
 #include "DeathStarTrench.h"
 
 #include "MoveableCamera.h"
+#include "Texture.h"
 
 #define DRAW_DIST 1000
+#define TEX_SIZE 10
 
 DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
     this->camera = new MoveableCamera(Vector4(0, 0, 20, 1), Vector4(0, 0, 0, 1), Vector4(0, 1, 0));
@@ -53,36 +55,53 @@ void DeathStarTrench::update(float dt) {
 void DeathStarTrench::render() {
 
     ship.render();
-	trench.render();
+    trench.render();
     Vector4 position = mCamera->getPosition();
-    
-    static const float x = trenchWidth/2.0;
-    static const float y = trenchHeight/2.0;
-    
+
+    static const float x = trenchWidth / 2.0;
+    static const float y = trenchHeight / 2.0;
+
+    glEnable(GL_TEXTURE_2D);
+    Texture::loadTexture(TRENCH_TEXTURE);
+
     for (int i = 0; i < DRAW_DIST; i++) {
         int depth = position.z() - i;
         
-        srand(depth);
-		
-		/* Draw Trench */
-		glColor3f((float)rand() /(float)RAND_MAX, (float)rand() /(float)RAND_MAX, (float)rand() /(float)RAND_MAX);
+        /* Draw Trench */
+        glColor3f(1, 1, 1);
         glBegin(GL_QUAD_STRIP);
-        
+
+        float fore = (depth % TEX_SIZE * 1.0) / TEX_SIZE;
+        float back = (depth % TEX_SIZE + 1.0) / TEX_SIZE;
+
+        glTexCoord2f(0, fore);
         glVertex3f(-x, y, depth);
-        glVertex3f(-x, y, depth-1);
-        
+        glTexCoord2f(0, back);
+        glVertex3f(-x, y, depth - 1);
+        glTexCoord2f(1, fore);
         glVertex3f(-x, -y, depth);
-        glVertex3f(-x, -y, depth-1);
-        
+        glTexCoord2f(1, back);
+        glVertex3f(-x, -y, depth - 1);
+
+        glTexCoord2f(0, fore);
+        glVertex3f(-x, -y, depth);
+        glTexCoord2f(0, back);
+        glVertex3f(-x, -y, depth - 1);
+        glTexCoord2f(1, 0);
         glVertex3f(x, -y, depth);
-        glVertex3f(x, -y, depth-1);
-        
+        glTexCoord2f(1, back);
+        glVertex3f(x, -y, depth - 1);
+
+        glTexCoord2f(0, fore);
+        glVertex3f(x, -y, depth);
+        glTexCoord2f(0, back);
+        glVertex3f(x, -y, depth - 1);
+        glTexCoord2f(1, fore);
         glVertex3f(x, y, depth);
-        glVertex3f(x, y, depth-1);
-        
+        glTexCoord2f(1, back);
+        glVertex3f(x, y, depth - 1);
+
         glEnd();
-
-
-        
     }
+    glDisable(GL_TEXTURE_2D);
 }

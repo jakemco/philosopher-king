@@ -6,6 +6,10 @@
 #include <math.h>
 #include <iostream>
 
+#define BG_TEXTURE 0
+#define TRENCH_TEXTURE 1
+#define MAX_MAPS 2 // last texture id + 1
+
 class Texture {
 public:
     static unsigned char* loadPPM(const char* filename, int& width, int& height);
@@ -13,7 +17,6 @@ public:
     static void loadTexture(int index);
 
 private:
-    static const int MAX_MAPS = 10;
     static unsigned char* data[MAX_MAPS];
     static int width[MAX_MAPS];
     static int height[MAX_MAPS];

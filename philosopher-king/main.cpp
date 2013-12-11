@@ -13,11 +13,11 @@
 
 #include "DeathStarTrench.h"
 #include "FlightControls.h"
-
+#include "Texture.h"
 
 int main(int argc, char* argv[]) {
     Window::input = new FlightControls();
     Window::world = new DeathStarTrench((FlightControls*)Window::input);
-    
+    Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
     return Window::main(argc,argv);
 }
