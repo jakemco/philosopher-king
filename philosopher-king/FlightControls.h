@@ -15,6 +15,8 @@ private:
     float xProp, yProp;
     
 public:
+
+	FlightControls();
     
     virtual void passiveMotionCallback(int x, int y);
 	virtual void activeMotionCallback(int x, int y);

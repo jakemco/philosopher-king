@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Vector4.h"
+#include "BoundingBox.h"
 
 class Ship {
 private:
@@ -16,6 +17,8 @@ private:
     Vector4 position;
 	Vector4 rotate;
 	float angle;
+
+	bool crashed;
 public:
     
     Ship();
@@ -23,5 +26,8 @@ public:
     void update(float, float, float);
     void render();
     
-    Vector4 getPosition();
+    Vector4 getPosition() const;
+	BoundingBox getBox() const;
+
+	void crash();
 };

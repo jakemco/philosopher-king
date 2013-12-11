@@ -22,6 +22,11 @@
 
 #define CLAMP(x,a,b) ((x) < (a) ? (a) : ((x) > (b) ? (b) : (x)))
 
+FlightControls::FlightControls() : InputManager() {
+	this->xProp = 0;
+	this->yProp = 0;
+}
+
 void FlightControls::passiveMotionCallback(int x, int y) {
     
 	float mouseX = (float) x / (float) Window::width;

@@ -24,17 +24,19 @@ const float Ship::SPEED = 50.0f;
 
 Ship::Ship() {
 	this->position = Vector4(0, 0, 0, 1);
+	this->crashed = false;
 }
 
 void Ship::update(float dt, float x, float y) {
-    
-	Vector4 destination(position.x() + x, position.y() + y, position.z() - SPEED, 1.0f);
-	Vector4 dir = Vector4::normalize(destination - position)*SPEED*dt;
+	if (!crashed) {
+		Vector4 destination(position.x() + x, position.y() + y, position.z() - SPEED, 1.0f);
+		Vector4 dir = Vector4::normalize(destination - position)*SPEED*dt;
 
-	this->rotate = Vector4::cross(Vector4(0, 0, -1), dir);
-	this->angle = Vector4::angle(Vector4(0, 0, -1), dir);
+		this->rotate = Vector4::cross(Vector4(0, 0, -1), dir);
+		this->angle = Vector4::angle(Vector4(0, 0, -1), dir);
 
-	this->position += dir;
+		this->position += dir;
+	}
 }
 
 void Ship::render() {
@@ -43,12 +45,21 @@ void Ship::render() {
 	glTranslatef(this->position.x(), this->position.y(), this->position.z());
     glRotatef(this->angle * 180.0 / M_PI, this->rotate.x(), this->rotate.y(), this->rotate.z());
     
-    glColor3f(1,1,1);
+	if (crashed) glColor3f(1.0, 0.2, 0.2);
+    else glColor3f(1,1,1);
 	glutSolidCube(1);
     
 	glPopMatrix();
 }
 
-Vector4 Ship::getPosition() {
+Vector4 Ship::getPosition() const {
     return this->position;
+}
+
+BoundingBox Ship::getBox() const {
+	return BoundingBox(this->position, 1, 1, 1);
+}
+
+void Ship::crash() {
+	crashed = true;
 }

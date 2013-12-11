@@ -25,7 +25,7 @@
 
 #define DRAW_DIST 1000
 
-DeathStarTrench::DeathStarTrench(FlightControls* f) {
+DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
     this->camera = new MoveableCamera(Vector4(0, 0, 20, 1), Vector4(0, 0, 0, 1), Vector4(0, 1, 0));
     this->mCamera = (MoveableCamera*)this->camera;
     
@@ -45,6 +45,8 @@ void DeathStarTrench::update(float dt) {
     mCamera->setPosition(position);
 
 	this->trench.update(position.z(), DRAW_DIST);
+
+	if (this->trench.collision(ship)) ship.crash();
     
 }
 
