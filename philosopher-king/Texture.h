@@ -15,9 +15,11 @@ public:
     static unsigned char* loadPPM(const char* filename, int& width, int& height);
     static void loadPPM(const char* filename, int index);
     static void loadTexture(int index);
+    static GLuint textures[MAX_MAPS];
 
 private:
     static unsigned char* data[MAX_MAPS];
     static int width[MAX_MAPS];
     static int height[MAX_MAPS];
+    
 };

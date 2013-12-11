@@ -12,6 +12,7 @@ void idle();
 unsigned char* Texture::data[MAX_MAPS];
 int Texture::width[MAX_MAPS];
 int Texture::height[MAX_MAPS];
+GLuint Texture::textures[MAX_MAPS];
 
 /** Load a ppm file from disk.
 @input filename The location of the PPM file.  If the file is not found, an error message
@@ -75,12 +76,21 @@ unsigned char* Texture::loadPPM(const char* filename, int& width, int& height)
 void Texture::loadPPM(const char* filename, int index)
 {
     data[index] = loadPPM(filename, width[index], height[index]);
+
+    if (data[index] == NULL) {
+        std::cerr << "rawData is null" << std::endl;
+        return;
+    }
+
+    glGenTextures(1, &textures[index]);
+    glBindTexture(GL_TEXTURE_2D, textures[index]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, width[index], height[index], 0, GL_RGB, GL_UNSIGNED_BYTE, data[index]);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 }
 
 // load image file into texture object
 void Texture::loadTexture(int index)
 {
-    GLuint texture[1];     // storage for one texture
     int twidth, theight;   // texture width/height [pixels]
     unsigned char* tdata;  // texture pixel data
 
@@ -89,19 +99,10 @@ void Texture::loadTexture(int index)
     theight = height[index];
 
     // Load image file
-    //tdata = loadPPM(filename, twidth, theight);
     if (tdata == NULL) return;
 
-    // Create ID for texture
-    glGenTextures(1, &texture[0]);
-
-    // Set this texture to be the one we are working with
-    glBindTexture(GL_TEXTURE_2D, texture[0]);
-
-    // Generate the texture
+    glGenTextures(1, &textures[index]); 
+    glBindTexture(GL_TEXTURE_2D, textures[index]);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, twidth, theight, 0, GL_RGB, GL_UNSIGNED_BYTE, tdata);
-
-    // Set bi-linear filtering for both minification and magnification
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }

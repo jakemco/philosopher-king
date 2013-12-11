@@ -88,7 +88,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveableCamera.cpp" />
     <ClCompile Include="Matrix4.cpp" />
+    <ClCompile Include="ObjReader.cpp" />
     <ClCompile Include="RandomTrench.cpp" />
+    <ClCompile Include="ShapeGrammar.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="StaticCamera.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -106,7 +108,9 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MoveableCamera.h" />
     <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="ObjReader.h" />
     <ClInclude Include="RandomTrench.h" />
+    <ClInclude Include="ShapeGrammar.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="StaticCamera.h" />
     <ClInclude Include="Texture.h" />

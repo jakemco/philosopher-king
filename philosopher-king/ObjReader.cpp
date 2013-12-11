@@ -7,6 +7,7 @@ ObjReader::ObjReader() { }
 
 ObjReader::ObjReader(char* filename) {
     readObj(filename, nVerts, &vertices, &normals, &texcoords, nIndices, &indices);
+    findMinMaxVerts();
 }
 
 void ObjReader::get_indices(char *word, int *vindex, int *tindex, int *nindex) {
@@ -224,11 +225,36 @@ void ObjReader::readObj(char* fileName, int &nVertices, float **vertices,
     delete[] tInd;
 }
 
-void ObjReader::flipHorizontal() {
-    int i;
-    for (i = 0; i < nVerts; i += 3) {
-        vertices[i] = -1 * vertices[i];
+void ObjReader::findMinMaxVerts() {
+    float x, y, z, minX, minY, minZ, maxX, maxY, maxZ;
+    for (int i = 0; i < nIndices; ++i) {
+        x = vertices[3 * indices[i]];
+        y = vertices[3 * indices[i] + 1];
+        z = vertices[3 * indices[i] + 2];
+
+        if (i == 0)
+        {
+            minX = maxX = x;
+            minY = maxY = y;
+            minZ = maxZ = z;
+        }
+
+        minX = fmin(x, minX);
+        minY = fmin(y, minY);
+        minZ = fmin(z, minZ);
+
+        maxX = fmax(x, maxX);
+        maxY = fmax(y, maxY);
+        maxZ = fmax(z, maxZ);
     }
+    minX = abs(minX);
+    minY = abs(minY);
+    minZ = abs(minZ);
+    x = fmax(maxX, minX);
+    y = fmax(maxY, minY);
+    z = fmax(maxZ, minZ);
+
+    maxRange = fmax(x, fmax(y, z));
 }
 
 int ObjReader::getNVerts()   { return nVerts; }
@@ -237,3 +263,4 @@ float const * const ObjReader::getNormals()   { return normals; }
 float const * const ObjReader::getTexcoords() { return texcoords; }
 int const * const ObjReader::getIndices()     { return indices; }
 int ObjReader::getNIndices() { return nIndices; }
+int ObjReader::getMaxRange() { return maxRange; }

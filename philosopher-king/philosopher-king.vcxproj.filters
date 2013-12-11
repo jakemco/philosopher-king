@@ -69,6 +69,12 @@
     <ClCompile Include="BoundingBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObjReader.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeGrammar.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MoveableCamera.h">
@@ -118,6 +124,12 @@
     </ClInclude>
     <ClInclude Include="BoundingBox.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjReader.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeGrammar.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

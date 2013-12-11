@@ -7,56 +7,108 @@
 #include "GLUT/glut.h"
 #endif
 
-char* ShapeGrammar::namesDroids[TYPES] = {
+char* ShapeGrammar::namesDroids[DROID_TYPES] = {
     "../resources/models/objects/awing_droid.obj",
     "../resources/models/objects/xwing_droid.obj",
     "../resources/models/objects/ywing_droid.obj"};
-char* ShapeGrammar::namesEngines[TYPES] = {
+char* ShapeGrammar::namesEngines[ENGINE_TYPES] = {
     "../resources/models/objects/awing_engine.obj",
     "../resources/models/objects/xwing_engine.obj",
     "../resources/models/objects/ywing_engine.obj"};
-char* ShapeGrammar::namesFront[TYPES] = {
+char* ShapeGrammar::namesFront[FRONT_TYPES] = {
     "../resources/models/objects/awing_front.obj",
     "../resources/models/objects/xwing_front.obj",
     "../resources/models/objects/ywing_front.obj" };
-char* ShapeGrammar::namesWings[TYPES] = {
+char* ShapeGrammar::namesWings[WING_TYPES] = {
     "../resources/models/objects/awing_wing.obj",
     "../resources/models/objects/xwing_wing.obj",
     "../resources/models/objects/ywing_wing.obj" };
 
-ObjReader ShapeGrammar::droids[TYPES];
-ObjReader ShapeGrammar::engines[TYPES];
-ObjReader ShapeGrammar::fronts[TYPES];
-ObjReader ShapeGrammar::rightWings[TYPES];
-ObjReader ShapeGrammar::leftWings[TYPES];
+ObjReader ShapeGrammar::droids[DROID_TYPES];
+ObjReader ShapeGrammar::engines[ENGINE_TYPES];
+ObjReader ShapeGrammar::fronts[FRONT_TYPES];
+ObjReader ShapeGrammar::wings[WING_TYPES];
+
+int ShapeGrammar::droidPart = 0;
+int ShapeGrammar::enginePart = 0;
+int ShapeGrammar::frontPart = 0;
+int ShapeGrammar::wingPart = 0;
 
 int ShapeGrammar::initialized = 0;
 
 void ShapeGrammar::init()
 {
     int i;
-    for (i = 0; i < TYPES; ++i) {
+    for (i = 0; i < DROID_TYPES; ++i) {
         droids[i] = ObjReader(namesDroids[i]);
+    }
+
+    for (i = 0; i < ENGINE_TYPES; ++i) {
         engines[i] = ObjReader(namesEngines[i]);
+    }
+
+    for (i = 0; i < FRONT_TYPES; ++i) {
         fronts[i] = ObjReader(namesFront[i]);
-        rightWings[i] = ObjReader(namesWings[i]);
-        leftWings[i] = ObjReader(namesWings[i]);
-        leftWings[i].flipHorizontal();
+    }
+
+    for (i = 0; i < WING_TYPES; ++i) {
+        wings[i] = ObjReader(namesWings[i]);
     }
 
     initialized = 1;
 }
 
-void ShapeGrammar::designShip(int d, int e, int f, int w) {
+float ShapeGrammar::maxPartRange() {
+    float dRange, eRange, fRange, wRange;
+    dRange = droids[droidPart].getMaxRange();
+    eRange = engines[enginePart].getMaxRange();
+    fRange = fronts[frontPart].getMaxRange(); 
+    wRange = wings[wingPart].getMaxRange();
+
+    return fmax(dRange, fmax(eRange, fmax(fRange, wRange)));
+}
+
+void ShapeGrammar::designShip() {
     if (!initialized)
         ShapeGrammar::init();
 
-    render(droids[d]);
-    render(engines[e]);
-    render(fronts[f]);
-    render(rightWings[w]);
-    render(leftWings[w]);
+    render(droids[droidPart]);
+    render(engines[enginePart]);
+    render(fronts[frontPart]);
+    render(wings[wingPart]);
+    renderLeftWing(wings[wingPart]);
 }
+
+void ShapeGrammar::makeAWing() {
+    droidPart = AWING;
+    enginePart = AWING;
+    frontPart = AWING;
+    wingPart = AWING;
+}
+
+void ShapeGrammar::makeXWing() {
+    droidPart = XWING;
+    enginePart = XWING;
+    frontPart = XWING;
+    wingPart = XWING;
+}
+
+void ShapeGrammar::makeYWing() {
+    droidPart = YWING;
+    enginePart = YWING;
+    frontPart = YWING;
+    wingPart = YWING;
+}
+
+void ShapeGrammar::nextDroidPart() { droidPart = ++droidPart % DROID_TYPES; }
+void ShapeGrammar::nextEnginePart() { enginePart = ++enginePart % ENGINE_TYPES; }
+void ShapeGrammar::nextFrontPart() { frontPart = ++frontPart % FRONT_TYPES; }
+void ShapeGrammar::nextWingPart() { wingPart = ++wingPart % WING_TYPES; }
+
+void ShapeGrammar::prevDroidPart() { droidPart = (DROID_TYPES + --droidPart) % DROID_TYPES; }
+void ShapeGrammar::prevEnginePart() { enginePart = (ENGINE_TYPES + --enginePart) % ENGINE_TYPES; }
+void ShapeGrammar::prevFrontPart() { frontPart = (FRONT_TYPES + --frontPart) % FRONT_TYPES; }
+void ShapeGrammar::prevWingPart() { wingPart = (WING_TYPES + --wingPart) % WING_TYPES; }
 
 void ShapeGrammar::render(ObjReader obj) {
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -80,15 +132,13 @@ void ShapeGrammar::render(ObjReader obj) {
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
-
-void ShapeGrammar::makeAWing() {
-    designShip(AWING, AWING, AWING, AWING);
-}
-
-void ShapeGrammar::makeXWing() {
-    designShip(XWING, XWING, XWING, XWING);
-}
-
-void ShapeGrammar::makeYWing() {
-    designShip(YWING, YWING, YWING, YWING);
+void ShapeGrammar::renderLeftWing(ObjReader obj) {
+    glBegin(GL_TRIANGLES);
+    for (int i = 0; i < obj.getNIndices(); ++i) {
+        float x = -obj.getVertices()[3*obj.getIndices()[i]];
+        float y = obj.getVertices()[3*obj.getIndices()[i]+1];
+        float z = obj.getVertices()[3*obj.getIndices()[i]+2];
+        glVertex3f(x, y, z);
+    }
+    glEnd();
 }

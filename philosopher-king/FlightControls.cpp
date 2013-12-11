@@ -17,7 +17,7 @@
 #include <iostream>
 
 #include "FlightControls.h"
-
+#include "ShapeGrammar.h"
 #include "Window.h"
 
 #define CLAMP(x,a,b) ((x) < (a) ? (a) : ((x) > (b) ? (b) : (x)))
@@ -40,7 +40,24 @@ void FlightControls::passiveMotionCallback(int x, int y) {
 void FlightControls::activeMotionCallback(int x, int y) { this->passiveMotionCallback(x, y); }
 
 void FlightControls::mouseCallback(int button, int state, int x, int y) {}
-void FlightControls::keyboardCallback(unsigned char key, int x, int y) {}
+void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
+    switch (key) {
+    case 'a':
+    case 'A':
+        ShapeGrammar::makeAWing(); break;
+    case 'x':
+    case 'X':
+        ShapeGrammar::makeXWing(); break;
+    case 'y':
+    case 'Y': 
+        ShapeGrammar::makeYWing(); break;
+
+    case '1': ShapeGrammar::nextDroidPart(); break;
+    case '2': ShapeGrammar::nextEnginePart(); break;
+    case '3': ShapeGrammar::nextFrontPart(); break;
+    case '4': ShapeGrammar::nextWingPart(); break;
+    }
+}
 
 float FlightControls::getX() { return xProp; }
 float FlightControls::getY() { return yProp; }

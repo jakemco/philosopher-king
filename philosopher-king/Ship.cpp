@@ -19,6 +19,7 @@
 #include <iostream>
 
 #include "Ship.h"
+#include "ShapeGrammar.h"
 
 const float Ship::SPEED = 50.0f;
 
@@ -44,10 +45,14 @@ void Ship::render() {
 	
 	glTranslatef(this->position.x(), this->position.y(), this->position.z());
     glRotatef(this->angle * 180.0 / M_PI, this->rotate.x(), this->rotate.y(), this->rotate.z());
-    
+
+    float maxRange = ShapeGrammar::maxPartRange();
+    glScalef(1 / maxRange, 1 / maxRange, 1 / maxRange);
+
 	if (crashed) glColor3f(1.0, 0.2, 0.2);
     else glColor3f(1,1,1);
-	glutSolidCube(1);
+
+    ShapeGrammar::designShip();
     
 	glPopMatrix();
 }

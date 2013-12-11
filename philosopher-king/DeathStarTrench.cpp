@@ -35,6 +35,10 @@ DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
 
     this->trenchHeight = 10;
     this->trenchWidth = 10;
+
+    
+    glEnable(GL_TEXTURE_2D);
+    Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
 }
 
 void DeathStarTrench::update(float dt) {
@@ -49,7 +53,6 @@ void DeathStarTrench::update(float dt) {
     this->trench.update(position.z(), DRAW_DIST);
 
     if (this->trench.collision(ship)) ship.crash();
-
 }
 
 void DeathStarTrench::render() {
@@ -60,12 +63,16 @@ void DeathStarTrench::render() {
 
     static const float x = trenchWidth / 2.0;
     static const float y = trenchHeight / 2.0;
+    static int last_depth = position.z();
 
     glEnable(GL_TEXTURE_2D);
     Texture::loadTexture(TRENCH_TEXTURE);
+    //glBindTexture(GL_TEXTURE_2D, Texture::textures[TRENCH_TEXTURE]);
+    //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
     for (int i = 0; i < DRAW_DIST; i++) {
         int depth = position.z() - i;
+        if (depth >= last_depth) continue;
 
         /* Draw Trench */
         glColor3f(1, 1, 1);
@@ -131,6 +138,7 @@ void DeathStarTrench::render() {
         }
 
         glEnd();
+        ++last_depth;
     }
     glDisable(GL_TEXTURE_2D);
 }
