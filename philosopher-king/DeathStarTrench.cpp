@@ -67,6 +67,9 @@ void DeathStarTrench::render() {
 		/* Draw Trench */
 		glColor3f((float)rand() /(float)RAND_MAX, (float)rand() /(float)RAND_MAX, (float)rand() /(float)RAND_MAX);
         glBegin(GL_QUAD_STRIP);
+
+		glVertex3f(-100, y, depth);
+		glVertex3f(-100, y, depth - 1);
         
         glVertex3f(-x, y, depth);
         glVertex3f(-x, y, depth-1);
@@ -79,6 +82,9 @@ void DeathStarTrench::render() {
         
         glVertex3f(x, y, depth);
         glVertex3f(x, y, depth-1);
+
+		glVertex3f(100, y, depth);
+		glVertex3f(100, y, depth - 1);
         
         glEnd();
 
