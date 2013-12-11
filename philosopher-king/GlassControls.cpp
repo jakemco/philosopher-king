@@ -128,11 +128,14 @@ ULONG GlassControls::bluetoothLoop(SOCKADDR_BTH remoteAddr) {
 				return CXN_ERROR;
 		}
 
+		printf("Connected to Glass\n");
+
 		// Start reading from the socket
 		char incomingData[READ_BT_BUFFER_SIZE];
 		char * incomingDataPtr = incomingData;
 		int lengthReceived = 0;
 		int length = 0;
+		bool gotPacketsBefore = false;
 
 		do {
 			lengthReceived = recv(
@@ -144,6 +147,11 @@ ULONG GlassControls::bluetoothLoop(SOCKADDR_BTH remoteAddr) {
 			if (lengthReceived == SOCKET_ERROR) {
 				wprintf(L"=CRITICAL= | recv() call failed. WSAGetLastError=[%d]\n", WSAGetLastError());
 				return CXN_ERROR;
+			}
+
+			if (!gotPacketsBefore) {
+				gotPacketsBefore = true;
+				printf("Getting packets from Glass\n");
 			}
 
 			// Swap the endianness of the bytes read.
