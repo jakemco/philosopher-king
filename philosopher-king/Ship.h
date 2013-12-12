@@ -29,6 +29,7 @@ private:
     
     static sf::SoundBuffer buffer;
     sf::Sound* blaster;
+    sf::Music flying;
 
 	std::set<Laser*> lasers;
 

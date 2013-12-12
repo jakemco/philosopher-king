@@ -31,6 +31,10 @@ Ship::Ship() {
         buffer.loadFromFile("blaster.wav");
     
     blaster = new sf::Sound(buffer);
+
+    flying.openFromFile("xwing.wav");
+    flying.setLoop(true);
+    
 	this->reset();
 }
 
@@ -40,6 +44,9 @@ Ship::~Ship() {
 
 void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
 	if (!crashed) {
+        if (flying.getStatus() != sf::Music::Status::Playing) {
+            flying.play();
+        }
 		charge += dt;
 
 		Vector4 destination(position.x() + x, position.y() + y, position.z() - SPEED, 1.0f);
@@ -79,7 +86,7 @@ void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
 			lasers.erase(l);
 			delete l;
 		}
-	}
+	} else flying.stop();
 }
 
 void Ship::render() {
