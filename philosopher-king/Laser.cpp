@@ -33,7 +33,7 @@ void Laser::render() {
 	glTranslatef(position.x(), position.y(), position.z());
 	Vector4 rotate = Vector4::cross(Vector4(0, 0, -1), direction);
 	glRotatef(Vector4::angle(Vector4(0, 0, -1), direction) * 180.0 / M_PI, rotate.x(), rotate.y(), rotate.z());
-	glScalef(0.1, 0.1, 5);
+	glScalef(0.05, 0.05, 5);
 
 	glColor3f(0, 1, 0);
 	glutSolidCube(1.0);
