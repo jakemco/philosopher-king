@@ -25,6 +25,7 @@ public:
 	int getDepth() const;
 
 	void draw() const;
+    void draw_wall_part() const; 
 	BoundingBox getBox() const;
 
 	void crash() { crashed = true; }

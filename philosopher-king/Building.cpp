@@ -11,6 +11,7 @@
 #include <ctime>
 
 #include "Building.h"
+#include "Texture.h"
 
 #define RAND_FLOAT(min,max) ((min) + (((float)rand()/(float)RAND_MAX)*((max) - (min))))
 
@@ -84,18 +85,88 @@ void Building::draw() const {
 	if (crashed) glColor3f(1.0, 0.2, 0.2);
 	else if (wall_part)
 	{
-		/* TODO - Amy, texture this with wall plz? */
-		glColor3f(0.1, 0.1, 0.1);
+		//glColor3f(0.1, 0.1, 0.1);
+        glColor3f(1, 1, 1);
 	}
 	else glColor3f(1.0, 1.0, 1.0);
 
 	if (type == Sphere) glutSolidSphere(sphere_size, 20, 20);
 	else if (type == Cube) {
 		glScalef(size.x(), size.y(), size.z());
-		glutSolidCube(1.0);
+
+        if (wall_part) {
+            draw_wall_part();
+        }
+        else {
+            glutSolidCube(1.0);
+        }
 	}
 
 	glPopMatrix();
+}
+
+void Building::draw_wall_part() const {
+    glEnable(GL_TEXTURE_2D);
+    float x0, x1, y0, y1, z0, z1;
+
+    //x0 = position.x() - size.x() / 2.0;
+    //x1 = position.x() + size.x() / 2.0;
+    //y0 = position.y() - size.y() / 2.0;
+    //y1 = position.y() + size.y() / 2.0;
+    //z0 = position.z() - size.z() / 2.0;
+    //z1 = position.z() + size.z() / 2.0;
+
+    x0 = y0 = z0 = -0.5;
+    x1 = y1 = z1 = 0.5;
+
+    glBegin(GL_QUADS);
+    glNormal3f(-1, 0, 0);   // left face, const x0
+    glTexCoord2f(0, 0);  glVertex3f(x0, y1, z0);
+    glTexCoord2f(1, 0);  glVertex3f(x0, y1, z1);
+    glTexCoord2f(1, 1);  glVertex3f(x0, y0, z1);
+    glTexCoord2f(0, 1);  glVertex3f(x0, y0, z0);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glNormal3f(0, 0, 1);   // front face, const z1
+    glTexCoord2f(0, 0);  glVertex3f(x0, y1, z1);
+    glTexCoord2f(1, 0);  glVertex3f(x1, y1, z1);
+    glTexCoord2f(1, 1);  glVertex3f(x1, y0, z1);
+    glTexCoord2f(0, 1);  glVertex3f(x0, y0, z1);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glNormal3f(1, 0, 0);   // right face, const x1
+    glTexCoord2f(0, 0);  glVertex3f(x1, y1, z1);
+    glTexCoord2f(1, 0);  glVertex3f(x1, y1, z0);
+    glTexCoord2f(1, 1);  glVertex3f(x1, y0, z0);
+    glTexCoord2f(0, 1);  glVertex3f(x1, y0, z1);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glNormal3f(0, 0, -1);   // back face, const z0
+    glTexCoord2f(0, 0);  glVertex3f(x1, y1, z1);
+    glTexCoord2f(1, 0);  glVertex3f(x0, y1, z1);
+    glTexCoord2f(1, 1);  glVertex3f(x0, y0, z1);
+    glTexCoord2f(0, 1);  glVertex3f(x1, y0, z1);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glNormal3f(0, 1, 0);   // top face, const y1
+    glTexCoord2f(0, 0);  glVertex3f(x0, y1, z0);
+    glTexCoord2f(1, 0);  glVertex3f(x1, y1, z0);
+    glTexCoord2f(1, 1);  glVertex3f(x1, y1, z1);
+    glTexCoord2f(0, 1);  glVertex3f(x0, y1, z1);
+    glEnd();
+
+    glBegin(GL_QUADS);
+    glNormal3f(0, -1, 0);   // bottom face, const y0
+    glTexCoord2f(0, 0);  glVertex3f(x0, y0, z0);
+    glTexCoord2f(1, 0);  glVertex3f(x1, y0, z0);
+    glTexCoord2f(1, 1);  glVertex3f(x1, y0, z1);
+    glTexCoord2f(0, 1);  glVertex3f(x0, y0, z1);
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
 }
 
 BoundingBox Building::getBox() const {
