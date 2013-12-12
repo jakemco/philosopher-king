@@ -85,7 +85,6 @@ void Building::draw() const {
 	if (crashed) glColor3f(1.0, 0.2, 0.2);
 	else if (wall_part)
 	{
-		//glColor3f(0.1, 0.1, 0.1);
         glColor3f(1, 1, 1);
 	}
 	else glColor3f(1.0, 1.0, 1.0);
@@ -108,13 +107,6 @@ void Building::draw() const {
 void Building::draw_wall_part() const {
     glEnable(GL_TEXTURE_2D);
     float x0, x1, y0, y1, z0, z1;
-
-    //x0 = position.x() - size.x() / 2.0;
-    //x1 = position.x() + size.x() / 2.0;
-    //y0 = position.y() - size.y() / 2.0;
-    //y1 = position.y() + size.y() / 2.0;
-    //z0 = position.z() - size.z() / 2.0;
-    //z1 = position.z() + size.z() / 2.0;
 
     x0 = y0 = z0 = -0.5;
     x1 = y1 = z1 = 0.5;
