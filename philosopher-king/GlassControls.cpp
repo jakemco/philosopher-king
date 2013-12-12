@@ -97,7 +97,7 @@ float GlassControls::getInterpolatedY() {
 }
 
 float GlassControls::getInterpolatedX() {
-	Vector4 vector = Matrix4::rotateZ(-this->getRoll()).multiply(Vector4(0, 5, 0));
+	Vector4 vector = Matrix4::rotateZ(-this->getRoll()).multiply(Vector4(0, 3, 0));
 	return (float)vector.x();
 }
 
