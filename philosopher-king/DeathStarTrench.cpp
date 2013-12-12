@@ -7,6 +7,7 @@
 //
 
 #include <cstdlib>
+#include "GLee.h"
 
 #ifdef WIN32
 #include "GL/glut.h"
@@ -59,6 +60,10 @@ void DeathStarTrench::update(float dt) {
     position[1] = ship.getPosition().y() / 1.2 + 1;
     position[2] = ship.getPosition().z() + 7;
     mCamera->setPosition(position);
+
+	Vector4 shipPos = ship.getPosition();
+	glUniform3f(glGetUniformLocation(Window::targetingShader->getPid(), "ship"), shipPos[0], shipPos[1], shipPos[2]);
+	glUniform3f(glGetUniformLocation(Window::targetingShader->getPid(), "cameraPosition"), 0, 1, 7);
 
     this->trench->update(dt, position, DRAW_DIST);
 

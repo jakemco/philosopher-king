@@ -7,7 +7,7 @@
 //
 
 #include <cstdlib>
-
+#include "GLee.h"
 #ifdef WIN32
   #include "GL/glut.h"
 #else
@@ -28,6 +28,7 @@ FlightControls::FlightControls(WorldManager* gc) : InputManager() {
 	this->useGlass = false;
 	this->glassOverride = new GlassControls();
 	this->glassOverride->connectToGlass();
+	this->targetingComputerOn = false;
 
 	this->gameController = gc;
     this->shooting = false;
@@ -77,6 +78,15 @@ void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
 	case 'r': gameController->reset(); break;
 	case 'q': Window::quit(); break;
 	case 'f': glutFullScreen(); break;
+	case 't':
+		this->targetingComputerOn = !this->targetingComputerOn;
+		if (targetingComputerOn) {
+			Window::targetingShader->bind();
+		}
+		else {
+			Window::targetingShader->unbind();
+		}
+		break;
     }
 }
 

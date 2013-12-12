@@ -1,5 +1,6 @@
 
 #include <cstdlib>
+#include "GLee.h"
 
 #ifdef WIN32
   #include "GL/glut.h"

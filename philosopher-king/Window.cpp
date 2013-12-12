@@ -8,6 +8,8 @@
 
 #include <cstdlib>
 
+#include "GLee.h"
+
 #ifdef WIN32
   #include <GL/glut.h>
 #else
@@ -37,6 +39,8 @@ int Window::height = 512;
 
 InputManager* Window::input = NULL;
 WorldManager* Window::world = NULL;
+
+Shader* Window::targetingShader = NULL;
 
 //-----------------------------------------//
 
@@ -101,6 +105,11 @@ int Window::main(int argc, char * argv[])
     glLightfv(GL_LIGHT0, GL_POSITION, position);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+
+	Window::targetingShader = new Shader(
+		"../resources/shaders/targeting.vert",
+		"../resources/shaders/targeting.frag",
+		true);
     
     glutReshapeFunc(Window::reshapeCallback);
     

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "GLee.h"
 #ifdef WIN32
   #include <GL/glut.h>
 #else

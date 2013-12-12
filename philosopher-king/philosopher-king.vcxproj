@@ -86,6 +86,7 @@
     <ClCompile Include="FlightControls.cpp" />
     <ClCompile Include="FPSControls.cpp" />
     <ClCompile Include="GlassControls.cpp" />
+    <ClCompile Include="GLee.c" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
@@ -93,6 +94,7 @@
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="ObjReader.cpp" />
     <ClCompile Include="RandomTrench.cpp" />
+    <ClCompile Include="shader.cpp" />
     <ClCompile Include="ShapeGrammar.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="StaticCamera.cpp" />
@@ -109,12 +111,14 @@
     <ClInclude Include="FlightControls.h" />
     <ClInclude Include="FPSControls.h" />
     <ClInclude Include="GlassControls.h" />
+    <ClInclude Include="GLee.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="MoveableCamera.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="ObjReader.h" />
     <ClInclude Include="RandomTrench.h" />
+    <ClInclude Include="shader.h" />
     <ClInclude Include="ShapeGrammar.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="StaticCamera.h" />

@@ -2,6 +2,8 @@
 #include "ShapeGrammar.h"
 
 
+#include "GLee.h"
+
 #ifdef WIN32
 #include "GL/glut.h"
 #else
@@ -164,5 +166,6 @@ void ShapeGrammar::renderLeftWing(ObjReader obj) {
 			glNormal3f(normalX, normalY, normalZ);
 		}
     }
+
     glEnd();
 }

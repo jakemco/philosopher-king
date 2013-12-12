@@ -17,6 +17,7 @@ private:
     float xProp, yProp;
 	GlassControls *glassOverride;
 	bool useGlass;
+	bool targetingComputerOn;
     
 	WorldManager* gameController;
 
