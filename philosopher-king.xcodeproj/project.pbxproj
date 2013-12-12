@@ -14,6 +14,7 @@
 		E3084335185A416C00519BA0 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3084331185A416C00519BA0 /* sfml-window.framework */; };
 		E3084337185A41CC00519BA0 /* blaster.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3084336185A41C500519BA0 /* blaster.wav */; };
 		E3084339185A48FF00519BA0 /* xwing.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3084338185A486D00519BA0 /* xwing.wav */; };
+		E308433C185A5EB300519BA0 /* Hud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E308433A185A5EB300519BA0 /* Hud.cpp */; };
 		E309EDF8185A3DA40041D45E /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E309EDF7185A3DA40041D45E /* SFML.framework */; };
 		E309EDFA185A3E380041D45E /* music.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = E309EDF9185A3E2F0041D45E /* music.wav */; };
 		E317299918551ABA00EDA005 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299518551ABA00EDA005 /* InputManager.cpp */; };
@@ -73,6 +74,8 @@
 		E3084331185A416C00519BA0 /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../../../../../../Library/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
 		E3084336185A41C500519BA0 /* blaster.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blaster.wav; path = "philosopher-king/blaster.wav"; sourceTree = "<group>"; };
 		E3084338185A486D00519BA0 /* xwing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = xwing.wav; path = "philosopher-king/xwing.wav"; sourceTree = "<group>"; };
+		E308433A185A5EB300519BA0 /* Hud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hud.cpp; sourceTree = "<group>"; };
+		E308433B185A5EB300519BA0 /* Hud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hud.h; sourceTree = "<group>"; };
 		E309EDF7185A3DA40041D45E /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
 		E309EDF9185A3E2F0041D45E /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = music.wav; path = "philosopher-king/music.wav"; sourceTree = "<group>"; };
 		E317299518551ABA00EDA005 /* InputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputManager.cpp; path = "philosopher-king/InputManager.cpp"; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 				E31729AD18552D5F00EDA005 /* main.cpp */,
 				E31729AF18553CC300EDA005 /* Ship.cpp */,
 				E31729B018553CC300EDA005 /* Ship.h */,
+				E308433A185A5EB300519BA0 /* Hud.cpp */,
+				E308433B185A5EB300519BA0 /* Hud.h */,
 			);
 			path = "philosopher-king";
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				E385B3DB1859A93900F7D91A /* shader.cpp in Sources */,
 				E31729A5185525B600EDA005 /* Camera.cpp in Sources */,
 				E31729A0185522AE00EDA005 /* WorldManager.cpp in Sources */,
+				E308433C185A5EB300519BA0 /* Hud.cpp in Sources */,
 				E3C5BF06183D78030053F49B /* Vector4.cpp in Sources */,
 				E385B39618599E2E00F7D91A /* Texture.cpp in Sources */,
 				E385B39318599E2E00F7D91A /* ObjReader.cpp in Sources */,

@@ -184,6 +184,22 @@ bool RandomTrench::collision(const Ship& ship) {
 			}
 		}
 	}
+    
+    std::set<int> trash;
+    
+    for(std::pair<int,Building*> p : this->buildings) {
+        for (Laser* l : ship.lasers) {
+            if (p.second->getBox().contains(l->getPosition())) {
+                p.second->addDamage(1);
+                if(p.second->getDamage() > 10.0) trash.insert(p.first);
+                
+            }
+        }//end laser loop
+    }//end buildings loop
+    
+    for(int d : trash) {
+        this->buildings.erase(d);
+    }
 
 	return box.custom([&](const Vector4& min, const Vector4& max){
 		if (min.y() > size / 2) {

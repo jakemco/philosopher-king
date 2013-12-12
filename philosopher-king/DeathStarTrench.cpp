@@ -88,6 +88,8 @@ void DeathStarTrench::update(float dt) {
     this->trench->update(dt, position, DRAW_DIST);
 
     if (this->trench->collision(ship)) ship.crash();
+    
+    hud.update(dt,trenchSize,ship);
 }
 
 void DeathStarTrench::render() {
@@ -120,6 +122,10 @@ void DeathStarTrench::render() {
     glDisable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, NULL);
     glEnable(GL_LIGHTING);
+    
+    /* RENDER HUD LAST */
+    
+    hud.render();
 }
 
 void DeathStarTrench::reset() {

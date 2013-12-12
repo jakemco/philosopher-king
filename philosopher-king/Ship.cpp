@@ -23,6 +23,8 @@
 #include "ShapeGrammar.h"
 
 const float Ship::SPEED = 50.0f;
+const float Ship::RECHARGE = 3;
+
 sf::SoundBuffer Ship::buffer;
 
 
@@ -48,6 +50,8 @@ void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
             flying.play();
         }
 		charge += dt;
+        burst += dt;
+        if (burst > Ship::RECHARGE) { burst = Ship::RECHARGE; cooldown = false; }
 
 		Vector4 destination(position.x() + x, position.y() + y, position.z() - SPEED, 1.0f);
 		Vector4 dir = Vector4::normalize(destination - position)*SPEED*dt;
@@ -59,8 +63,11 @@ void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
 
 		this->position += dir;
 
-		if (shooting && charge > 0.15) {
+		if (shooting && charge > 0.15 && !cooldown) {
 			charge = 0;
+            burst -= 0.5;
+            
+            if(burst < 0) cooldown = true;
             
             float wingX = 0.5;
             
@@ -144,4 +151,10 @@ void Ship::reset() {
 	this->position = Vector4(0, 0, 0, 1);
 	this->crashed = false;
 	this->charge = 0;
+    this->burst = 3;
+    cooldown = false;
+}
+
+float Ship::getBurst() const {
+    return burst;
 }

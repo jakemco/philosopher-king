@@ -18,6 +18,7 @@
 
 Building::Building(int d, float size, float width, float height, float depth, bool allow_sphere)
 {
+    this->damage = 0;
 	this->wall_part = !allow_sphere;
 
 	float x = RAND_FLOAT(1, depth);
@@ -168,3 +169,6 @@ BoundingBox Building::getBox() const {
 	else
 		return BoundingBox(this->position, this->size.x(), this->size.y(), this->size.z());
 }
+
+void Building::addDamage(int d) { damage += d; }
+int Building::getDamage() { return damage; }

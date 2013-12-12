@@ -17,6 +17,8 @@
 #include "Laser.h"
 
 class Ship {
+    
+friend class RandomTrench;
 private:
     Vector4 position;
 	Vector4 rotate;
@@ -26,6 +28,8 @@ private:
 	bool crashed;
 
 	float charge;
+    float burst;
+    bool cooldown;
     
     static sf::SoundBuffer buffer;
     sf::Sound* blaster;
@@ -35,6 +39,7 @@ private:
 
 public:
 	static const float SPEED;
+    static const float RECHARGE;
     
     Ship();
     ~Ship();
@@ -47,4 +52,6 @@ public:
 
 	void crash();
 	void reset();
+    
+    float getBurst() const;
 };

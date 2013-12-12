@@ -17,6 +17,7 @@
 #include "MoveableCamera.h"
 #include "RandomTrench.h"
 #include "shader.h"
+#include "Hud.h"
 
 class DeathStarTrench : public WorldManager {
     
@@ -28,7 +29,7 @@ private:
 	Shader* targetingShader;
 	bool targetingShaderEnabled;
     sf::Music music;
-    
+    Hud hud;
     float trenchSize;
 
 public:

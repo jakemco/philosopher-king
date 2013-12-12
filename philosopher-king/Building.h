@@ -16,6 +16,8 @@ private:
 	enum { Sphere , Cube  } type;
 
 	bool crashed;
+    
+    int damage;
 
 public:
 	Building(int d, float size,float,float,float,bool);
@@ -27,6 +29,9 @@ public:
 	void draw() const;
     void draw_wall_part() const; 
 	BoundingBox getBox() const;
+    
+    void addDamage(int);
+    int getDamage();
 
 	void crash() { crashed = true; }
 };
