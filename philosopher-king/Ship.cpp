@@ -27,13 +27,15 @@ Ship::Ship() {
 	this->reset();
 }
 
-void Ship::update(float dt, float x, float y) {
+void Ship::update(float dt, float x, float y, float controlsX) {
 	if (!crashed) {
 		Vector4 destination(position.x() + x, position.y() + y, position.z() - SPEED, 1.0f);
 		Vector4 dir = Vector4::normalize(destination - position)*SPEED*dt;
 
 		this->rotate = Vector4::cross(Vector4(0, 0, -1), dir);
 		this->angle = Vector4::angle(Vector4(0, 0, -1), dir);
+		
+		this->zrotAngle = -controlsX;
 
 		this->position += dir;
 	}
@@ -43,6 +45,7 @@ void Ship::render() {
 	glPushMatrix();
 	
 	glTranslatef(this->position.x(), this->position.y(), this->position.z());
+	glRotatef(this->zrotAngle * 180.0 / M_PI, 0, 0, 1);
     glRotatef(this->angle * 180.0 / M_PI, this->rotate.x(), this->rotate.y(), this->rotate.z());
 
     float maxRange = ShapeGrammar::maxPartRange();

@@ -17,13 +17,14 @@ private:
     Vector4 position;
 	Vector4 rotate;
 	float angle;
+	float zrotAngle;
 
 	bool crashed;
 public:
     
     Ship();
     
-    void update(float, float, float);
+    void update(float, float, float, float);
     void render();
     
     Vector4 getPosition() const;

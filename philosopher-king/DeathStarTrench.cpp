@@ -45,7 +45,7 @@ DeathStarTrench::DeathStarTrench() {
 }
 
 void DeathStarTrench::update(float dt) {
-    ship.update(dt, controls->getX() * trenchSize, controls->getY() * trenchSize);
+    ship.update(dt, controls->getX() * trenchSize, controls->getY() * trenchSize, controls->getX());
 
     Vector4 position = mCamera->getPosition();
     position[0] = ship.getPosition().x();
