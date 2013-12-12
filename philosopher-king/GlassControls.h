@@ -13,6 +13,8 @@ private:
 	float roll;
 	std::thread *btReadThread;
 	float pitchZero;
+	bool fireLasers;
+	bool shouldToggleTargetingValue;
 
 	void initiateBluetooth();
 
@@ -29,6 +31,12 @@ public:
 
 	float getPitch();
 	float getRoll();
+	
+	bool getLasersFired();
+	void resetLasers();
+
+	bool shouldToggleTargeting();
+	void resetToggleTargeting();
 
 	float getInterpolatedX();
 	float getInterpolatedY();
