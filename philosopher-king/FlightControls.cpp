@@ -66,6 +66,8 @@ void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
 	case 'c': this->glassOverride->calibratePitch(); break;
 
 	case 'r': gameController->reset(); break;
+	case 'q': Window::quit(); break;
+	case 'f': glutFullScreen(); break;
     }
 }
 
