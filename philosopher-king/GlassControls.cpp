@@ -51,7 +51,7 @@ void GlassControls::connectToGlass() {
 	this->btReadThread = new std::thread(&GlassControls::initiateBluetooth, this);
 #else
 	// not supported
-#endif;
+#endif
 }
 
 void GlassControls::initiateBluetooth() {

@@ -33,7 +33,7 @@
 
 DeathStarTrench::DeathStarTrench() {
 
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 
     this->camera = new MoveableCamera(Vector4(0, 0, 20, 1), Vector4(0, 0, 0, 1), Vector4(0, 1, 0));
     this->mCamera = (MoveableCamera*)this->camera;
