@@ -52,8 +52,8 @@ void DeathStarTrench::init() {
     Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
 
 	this->targetingShader = new Shader(
-		"../resources/shaders/targeting.vert",
-		"../resources/shaders/targeting.frag",
+		"resources/shaders/targeting.vert",
+		"resources/shaders/targeting.frag",
 		true);
 }
 
