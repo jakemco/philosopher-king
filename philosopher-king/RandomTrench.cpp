@@ -1,10 +1,26 @@
+#include <cstdlib>
+
+#ifdef WIN32
+#include "GL/glut.h"
+#else
+#include "GLUT/glut.h"
+#endif
+
 #include <iostream>
 #include <ctime>
 #include <set>
 
 #include "RandomTrench.h"
 
+#include "Texture.h"
+
 #define CHANCE_BUILDING 0.05f
+
+#define DRAW_DIST 1000
+#define TEX_SIZE 20
+#define SURFACE_TEX_SIZE 5
+#define SIDE_TEX_SIZE 2
+#define BOTTOM_TEX_SIZE 1
 
 RandomTrench::RandomTrench(float size)
 {
@@ -57,6 +73,63 @@ void RandomTrench::render()
 		this->buildings.erase(abs(b->getDepth()));
 		delete b;
 	}
+
+	/* Draw dat trench */
+
+	static const float half = size / 2.0;
+
+	glEnable(GL_TEXTURE_2D);
+	Texture::loadTexture(TRENCH_TEXTURE);
+	glColor3f(1, 1, 1);
+	float nearPoint = -this->start;
+
+	float farPoint = nearPoint - DRAW_DIST;
+
+	float nearTex = nearPoint / TEX_SIZE;
+	float farTex = farPoint / TEX_SIZE;
+
+	glBegin(GL_QUADS);  // Death Star surface -- left
+	glNormal3f(0, 1, 0);
+	glTexCoord2f(0, nearTex); glVertex3f(-250, half, nearPoint);
+	glTexCoord2f(0, farTex); glVertex3f(-250, half, farPoint);
+	glTexCoord2f(SURFACE_TEX_SIZE, farTex); glVertex3f(-half, half, farPoint);
+	glTexCoord2f(SURFACE_TEX_SIZE, nearTex); glVertex3f(-half, half, nearPoint);
+	glEnd();
+
+	glBegin(GL_QUADS); // trench surface -- left
+	glNormal3f(1, 0, 0);
+	glTexCoord2f(0, nearTex); glVertex3f(-half, half, nearPoint);
+	glTexCoord2f(0, farTex); glVertex3f(-half, half, farPoint);
+	glTexCoord2f(SIDE_TEX_SIZE, farTex); glVertex3f(-half, -half, farPoint);
+	glTexCoord2f(SIDE_TEX_SIZE, nearTex); glVertex3f(-half, -half, nearPoint);
+	glEnd();
+
+	glBegin(GL_QUADS); // trench surface -- bottom
+	glNormal3f(0, 1, 0);
+	glTexCoord2f(0, nearTex); glVertex3f(-half, -half, nearPoint);
+	glTexCoord2f(0, farTex); glVertex3f(-half, -half, farPoint);
+	glTexCoord2f(BOTTOM_TEX_SIZE, farTex); glVertex3f(half, -half, farPoint);
+	glTexCoord2f(BOTTOM_TEX_SIZE, nearTex); glVertex3f(half, -half, nearPoint);
+	glEnd();
+
+	glBegin(GL_QUADS); // trench surfacee -- right
+	glNormal3f(-1, 0, 0);
+	glTexCoord2f(0, nearTex); glVertex3f(half, -half, nearPoint);
+	glTexCoord2f(0, farTex); glVertex3f(half, -half, farPoint);
+	glTexCoord2f(SIDE_TEX_SIZE, farTex); glVertex3f(half, half, farPoint);
+	glTexCoord2f(SIDE_TEX_SIZE, nearTex); glVertex3f(half, half, nearPoint);
+	glEnd();
+
+	glBegin(GL_QUADS); // Death Star surface -- right
+	glNormal3f(0, 1, 0);
+	glTexCoord2f(0, nearTex); glVertex3f(half, half, nearPoint);
+	glTexCoord2f(0, farTex); glVertex3f(half, half, farPoint);
+	glTexCoord2f(SURFACE_TEX_SIZE, farTex); glVertex3f(250, half, farPoint);
+	glTexCoord2f(SURFACE_TEX_SIZE, nearTex); glVertex3f(250, half, nearPoint);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, NULL);
+	glDisable(GL_TEXTURE_2D);
 }
 
 bool RandomTrench::collision(const Ship& ship) {

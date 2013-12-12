@@ -56,7 +56,7 @@ void DeathStarTrench::update(float dt) {
     position[2] = ship.getPosition().z() + 7;
     mCamera->setPosition(position);
 
-    this->trench.update(min(position.z(), -20), DRAW_DIST);
+    this->trench.update(position.z(), DRAW_DIST);
 
     if (this->trench.collision(ship)) ship.crash();
 }
@@ -81,61 +81,5 @@ void DeathStarTrench::render() {
 	glEnd();
 
 
-	/* Draw dat trench */
-
-    static const float x = trenchWidth / 2.0;
-    static const float y = trenchHeight / 2.0;
-
-    glEnable(GL_TEXTURE_2D);
-    Texture::loadTexture(TRENCH_TEXTURE);
-    glColor3f(1, 1, 1);
-    float nearPoint = position.z();
-
-    float farPoint = nearPoint - DRAW_DIST;
-
-    float nearTex = nearPoint / TEX_SIZE;
-    float farTex = farPoint / TEX_SIZE;
-
-    glBegin(GL_QUADS);  // Death Star surface -- left
-    glNormal3f(0, 1, 0);
-    glTexCoord2f(0, nearTex); glVertex3f(-100, y, nearPoint);
-    glTexCoord2f(0, farTex); glVertex3f(-100, y, farPoint);
-    glTexCoord2f(SURFACE_TEX_SIZE, nearTex); glVertex3f(-x, y, nearPoint);
-    glTexCoord2f(SURFACE_TEX_SIZE, farTex); glVertex3f(-x, y, farPoint);
-    glEnd();
-
-    glBegin(GL_QUADS); // trench surface -- left
-    glNormal3f(1, 0, 0);
-    glTexCoord2f(0, nearTex); glVertex3f(-x, y, nearPoint);
-    glTexCoord2f(0, farTex); glVertex3f(-x, y, farPoint);
-    glTexCoord2f(SIDE_TEX_SIZE, nearTex); glVertex3f(-x, -y, nearPoint);
-    glTexCoord2f(SIDE_TEX_SIZE, farTex); glVertex3f(-x, -y, farPoint);
-    glEnd();
-
-    glBegin(GL_QUADS); // trench surface -- bottom
-    glNormal3f(0, 1, 0);
-    glTexCoord2f(0, nearTex); glVertex3f(-x, -y, nearPoint);
-    glTexCoord2f(0, farTex); glVertex3f(-x, -y, farPoint);
-    glTexCoord2f(BOTTOM_TEX_SIZE, nearTex); glVertex3f(x, -y, nearPoint);
-    glTexCoord2f(BOTTOM_TEX_SIZE, farTex); glVertex3f(x, -y, farPoint);
-    glEnd();
-
-    glBegin(GL_QUADS); // trench surfacee -- right
-    glNormal3f(-1, 0, 0);
-    glTexCoord2f(0, nearTex); glVertex3f(x, -y, nearPoint);
-    glTexCoord2f(0, farTex); glVertex3f(x, -y, farPoint);
-    glTexCoord2f(SIDE_TEX_SIZE, nearTex); glVertex3f(x, y, nearPoint);
-    glTexCoord2f(SIDE_TEX_SIZE, farTex); glVertex3f(x, y, farPoint);
-    glEnd();
-
-    glBegin(GL_QUADS); // Death Star surface -- right
-    glNormal3f(0, 1, 0);
-    glTexCoord2f(0, nearTex); glVertex3f(x, y, nearPoint);
-    glTexCoord2f(0, farTex); glVertex3f(x, y, farPoint);
-    glTexCoord2f(SURFACE_TEX_SIZE, nearTex); glVertex3f(100, y, nearPoint);
-    glTexCoord2f(SURFACE_TEX_SIZE, farTex); glVertex3f(100, y, farPoint);
-    glEnd();
-
-    glBindTexture(GL_TEXTURE_2D, NULL);
-    glDisable(GL_TEXTURE_2D);
+	
 }
