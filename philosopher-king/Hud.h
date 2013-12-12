@@ -14,6 +14,7 @@ class Hud {
 private:
     float burst;
     bool over;
+    bool cooldown;
 public:
     void update(float, float, const Ship&);
     void render();

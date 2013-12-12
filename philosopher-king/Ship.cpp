@@ -158,3 +158,7 @@ void Ship::reset() {
 float Ship::getBurst() const {
     return burst;
 }
+
+bool Ship::onCooldown() const {
+    return cooldown;
+}

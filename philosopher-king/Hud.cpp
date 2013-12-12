@@ -15,6 +15,7 @@
 #include "GLUT/glut.h"
 #endif
 
+#include <algorithm>
 #include <iostream>
 
 #include "Hud.h"
@@ -24,7 +25,7 @@
 void Hud::update(float dt, float size, const Ship& ship) {
     burst = ship.getBurst();
     over = ship.getPosition().y() > size/2;
-    
+    cooldown = ship.onCooldown();
 }
 
 void Hud::render() {
@@ -61,6 +62,21 @@ void Hud::render() {
         
         glEnd();
     }
+    
+    
+    
+    glBegin(GL_QUADS);
+    
+    if(cooldown) glColor3f(1.0,0.1,0.1);
+    else glColor3f(0.8,0.8,0.8);
+    
+    glVertex2f(10, Window::height - 10);
+    glVertex2f( 10 + 200 * (burst < 0 ? 0 : burst) / Ship::RECHARGE , Window::height -10);
+    glVertex2f( 10 + 200 * (burst < 0 ? 0 : burst) / Ship::RECHARGE , Window::height -50);
+    glVertex2f(10, Window::height - 50);
+
+    
+    glEnd();
     
     /* DRAW ABOVE HERE */
     glEnable(GL_LIGHTING);

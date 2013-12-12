@@ -54,4 +54,5 @@ public:
 	void reset();
     
     float getBurst() const;
+    bool onCooldown() const;
 };
