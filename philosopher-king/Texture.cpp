@@ -76,13 +76,6 @@ unsigned char* Texture::loadPPM(const char* filename, int& width, int& height)
 void Texture::loadPPM(const char* filename, int index)
 {
     data[index] = loadPPM(filename, width[index], height[index]);
-
-    if (data[index] == NULL) {
-        std::cerr << "rawData is null" << std::endl;
-        return;
-    }
-
-    glGenTextures(1, &textures[index]);
 }
 
 // load image file into texture object
@@ -97,6 +90,8 @@ void Texture::loadTexture(int index)
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    if (index == TRENCH_TEXTURE) {
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    }
 }

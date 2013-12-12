@@ -20,31 +20,28 @@
 #include <ctime>
 
 #include "DeathStarTrench.h"
-
+#include "Window.h"
 #include "MoveableCamera.h"
 #include "Texture.h"
 
 #define DRAW_DIST 1000
-#define TEX_SIZE 20
-#define SURFACE_TEX_SIZE 5
-#define SIDE_TEX_SIZE 2
-#define BOTTOM_TEX_SIZE 1
 #define SKYBOX_RADIUS 500
 
 DeathStarTrench::DeathStarTrench() {
 
-	srand(time(NULL));
+    srand(time(NULL));
 
     this->camera = new MoveableCamera(Vector4(0, 0, 20, 1), Vector4(0, 0, 0, 1), Vector4(0, 1, 0));
     this->mCamera = (MoveableCamera*)this->camera;
 
-	this->controls = new FlightControls(this);
+    this->controls = new FlightControls(this);
 
-	this->trenchSize = 10;
-	this->trench = new RandomTrench(trenchSize);
+    this->trenchSize = 10;
+    this->trench = new RandomTrench(trenchSize);
 
+    glGenTextures(MAX_MAPS, &Texture::textures[0]);
+    Texture::loadPPM("yavin.ppm", BG_TEXTURE);
     Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
-
 }
 
 void DeathStarTrench::update(float dt) {
@@ -67,29 +64,36 @@ void DeathStarTrench::render() {
     trench->render();
     Vector4 position = mCamera->getPosition();
 
-	float skybox_dist = position.z() - DRAW_DIST + 20;
-	
-	glColor3f(0.2, 0.2, 0.5);
-	glBegin(GL_QUADS);
+    float skybox_dist = position.z() - DRAW_DIST + 20;
 
-	glNormal3f(0, 0, 1);
+    Texture::loadTexture(BG_TEXTURE);
+    glEnable(GL_TEXTURE_2D);
 
-	glVertex3f(-SKYBOX_RADIUS, -SKYBOX_RADIUS, skybox_dist);
-	glVertex3f(SKYBOX_RADIUS, -SKYBOX_RADIUS, skybox_dist);
-	glVertex3f(SKYBOX_RADIUS, SKYBOX_RADIUS, skybox_dist);
-	glVertex3f(-SKYBOX_RADIUS, SKYBOX_RADIUS, skybox_dist);
-	glEnd();
+    float w, h;
+    w = fmax(SKYBOX_RADIUS, Window::width / 2.0);
+    h = fmax(SKYBOX_RADIUS, Window::height / 2.0);
+    glDisable(GL_LIGHTING);
+    glBegin(GL_QUADS);
+    glColor3f(1, 1, 1);
+    glNormal3f(0, 0, 1);
 
+    glTexCoord2f(0, 1);  glVertex3f(-w, -h, skybox_dist);
+    glTexCoord2f(1, 1);  glVertex3f(w, -h, skybox_dist);
+    glTexCoord2f(1, 0);  glVertex3f(w, h, skybox_dist);
+    glTexCoord2f(0, 0);  glVertex3f(-w, h, skybox_dist);
+    glEnd();
 
-	
+    glDisable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, NULL);
+    glEnable(GL_LIGHTING);
 }
 
 void DeathStarTrench::reset() {
-	ship.reset();
-	delete trench;
-	this->trench = new RandomTrench(trenchSize);
+    ship.reset();
+    delete trench;
+    this->trench = new RandomTrench(trenchSize);
 }
 
 InputManager* DeathStarTrench::getControls() {
-	return this->controls;
+    return this->controls;
 }
