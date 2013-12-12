@@ -27,8 +27,8 @@
 		E385B39818599E4D00F7D91A /* stars.ppm in CopyFiles */ = {isa = PBXBuildFile; fileRef = E385B38A18599E2D00F7D91A /* stars.ppm */; };
 		E385B39918599E4D00F7D91A /* trench.ppm in CopyFiles */ = {isa = PBXBuildFile; fileRef = E385B38D18599E2E00F7D91A /* trench.ppm */; };
 		E385B39A18599E4D00F7D91A /* yavin.ppm in CopyFiles */ = {isa = PBXBuildFile; fileRef = E385B38E18599E2E00F7D91A /* yavin.ppm */; };
-		E385B3D81859A3C800F7D91A /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = E385B3D71859A3B900F7D91A /* resources */; };
 		E385B3DB1859A93900F7D91A /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E385B3D91859A93900F7D91A /* shader.cpp */; };
+		E385B3DC1859AE7200F7D91A /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = E385B3D71859A3B900F7D91A /* resources */; };
 		E3C5BF00183D77DE0053F49B /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BEFE183D77DE0053F49B /* Window.cpp */; };
 		E3C5BF05183D78030053F49B /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BF01183D78030053F49B /* Matrix4.cpp */; };
 		E3C5BF06183D78030053F49B /* Vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E3C5BF03183D78030053F49B /* Vector4.cpp */; };
@@ -44,7 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				E385B3D81859A3C800F7D91A /* resources in CopyFiles */,
+				E385B3DC1859AE7200F7D91A /* resources in CopyFiles */,
 				E385B39818599E4D00F7D91A /* stars.ppm in CopyFiles */,
 				E385B39918599E4D00F7D91A /* trench.ppm in CopyFiles */,
 				E385B39A18599E4D00F7D91A /* yavin.ppm in CopyFiles */,

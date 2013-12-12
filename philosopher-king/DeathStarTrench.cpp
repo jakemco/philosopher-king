@@ -77,8 +77,8 @@ void DeathStarTrench::update(float dt) {
 	}
 
 	Vector4 shipPos = ship.getPosition();
-	glUniform3f(glGetUniformLocation(this->targetingShader->getPid(), "ship"), shipPos[0], shipPos[1], shipPos[2]);
-	glUniform3f(glGetUniformLocation(this->targetingShader->getPid(), "cameraPosition"), 0, 1, 7);
+	glUniform3f(glGetUniformLocationARB(this->targetingShader->getPid(), "ship"), shipPos[0], shipPos[1], shipPos[2]);
+	glUniform3f(glGetUniformLocationARB(this->targetingShader->getPid(), "cameraPosition"), 0, 1, 7);
 
     this->trench->update(dt, position, DRAW_DIST);
 
