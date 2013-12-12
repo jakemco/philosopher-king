@@ -29,6 +29,7 @@
 #define SURFACE_TEX_SIZE 5
 #define SIDE_TEX_SIZE 2
 #define BOTTOM_TEX_SIZE 1
+#define SKYBOX_RADIUS 500
 
 DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
 
@@ -55,7 +56,7 @@ void DeathStarTrench::update(float dt) {
     position[2] = ship.getPosition().z() + 7;
     mCamera->setPosition(position);
 
-    this->trench.update(position.z(), DRAW_DIST);
+    this->trench.update(min(position.z(), -20), DRAW_DIST);
 
     if (this->trench.collision(ship)) ship.crash();
 }
@@ -65,6 +66,22 @@ void DeathStarTrench::render() {
     ship.render();
     trench.render();
     Vector4 position = mCamera->getPosition();
+
+	float skybox_dist = position.z() - DRAW_DIST + 20;
+	
+	glColor3f(0.2, 0.2, 0.5);
+	glBegin(GL_QUADS);
+
+	glNormal3f(0, 0, 1);
+
+	glVertex3f(-SKYBOX_RADIUS, -SKYBOX_RADIUS, skybox_dist);
+	glVertex3f(SKYBOX_RADIUS, -SKYBOX_RADIUS, skybox_dist);
+	glVertex3f(SKYBOX_RADIUS, SKYBOX_RADIUS, skybox_dist);
+	glVertex3f(-SKYBOX_RADIUS, SKYBOX_RADIUS, skybox_dist);
+	glEnd();
+
+
+	/* Draw dat trench */
 
     static const float x = trenchWidth / 2.0;
     static const float y = trenchHeight / 2.0;
