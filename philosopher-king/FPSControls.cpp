@@ -7,8 +7,8 @@
 //
 #include <cstdlib>
 
-#include "GLee.h"
 #ifdef WIN32
+  #include "GLee.h"
   #include <GL/glut.h>
 #else
   #include <GLUT/glut.h>

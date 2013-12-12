@@ -8,9 +8,10 @@
 
 #include <cstdlib>
 
-#include "GLee.h"
+
 
 #ifdef WIN32
+  #include "GLee.h"
   #include <GL/glut.h>
 #else
   #include <GLUT/glut.h>
@@ -107,8 +108,8 @@ int Window::main(int argc, char * argv[])
     glEnable(GL_LIGHT0);
 
 	Window::targetingShader = new Shader(
-		"../resources/shaders/targeting.vert",
-		"../resources/shaders/targeting.frag",
+		"resources/shaders/targeting.vert",
+		"resources/shaders/targeting.frag",
 		true);
     
     glutReshapeFunc(Window::reshapeCallback);

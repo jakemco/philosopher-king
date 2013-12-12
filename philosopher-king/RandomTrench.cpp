@@ -1,8 +1,7 @@
 #include <cstdlib>
 
-#include "GLee.h"
-
 #ifdef WIN32
+#include "GLee.h"
 #include "GL/glut.h"
 #else
 #include "GLUT/glut.h"
@@ -70,7 +69,7 @@ void RandomTrench::update(float dt, const Vector4& position, int d)
 
 	for (int i = 0; i < dt*LASERS_PER_SECOND; i++) {
 		Vector4 p = Vector4(RAND_FLOAT(-1, 1)*RAND_FLOAT(size / 2, 50), size / 2.0, position.z() - RAND_FLOAT(0, 200), 1);
-		Vector4 t = Vector4(position.x() + RAND_FLOAT(-5, 5), max((float) position.y(), size / 2) + RAND_FLOAT(0, 10), position.z() - Ship::SPEED / 2 - RAND_FLOAT(0, 10), 1);
+		Vector4 t = Vector4(position.x() + RAND_FLOAT(-5, 5), fmax((float) position.y(), size / 2) + RAND_FLOAT(0, 10), position.z() - Ship::SPEED / 2 - RAND_FLOAT(0, 10), 1);
 
 		lasers.insert(new Laser(p, t));
 	}
