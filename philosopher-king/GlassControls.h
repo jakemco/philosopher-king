@@ -12,6 +12,7 @@ private:
 	float pitch;
 	float roll;
 	std::thread *btReadThread;
+	float pitchZero;
 
 	void initiateBluetooth();
 
@@ -24,6 +25,7 @@ public:
 	~GlassControls();
 
 	void connectToGlass();
+	void calibratePitch();
 
 	float getPitch();
 	float getRoll();

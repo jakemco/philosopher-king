@@ -63,6 +63,7 @@ void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
     case '4': ShapeGrammar::nextWingPart(); break;
 
 	case 'g': useGlass = !useGlass; break;
+	case 'c': this->glassOverride->calibratePitch(); break;
 
 	case 'r': gameController->reset(); break;
     }
