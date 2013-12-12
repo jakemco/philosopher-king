@@ -27,6 +27,9 @@
 #define DRAW_DIST 1000
 #define SKYBOX_RADIUS 500
 
+#define CLAMP(x,a,b) ((x) < (a) ? (a) : ((x) > (b) ? (b) : (x)))
+
+
 DeathStarTrench::DeathStarTrench() {
 
 	srand(time(NULL));
@@ -48,8 +51,8 @@ void DeathStarTrench::update(float dt) {
     ship.update(dt, controls->getX() * trenchSize, controls->getY() * trenchSize, controls->getX());
 
     Vector4 position = mCamera->getPosition();
-    position[0] = ship.getPosition().x();
-    position[1] = ship.getPosition().y() + 1;
+	position[0] = ship.getPosition().x() / 1.6;
+    position[1] = ship.getPosition().y() / 1.2 + 1;
     position[2] = ship.getPosition().z() + 7;
     mCamera->setPosition(position);
 
