@@ -88,7 +88,7 @@ void Building::draw() const {
 	{
         glColor3f(1, 1, 1);
 	}
-	else glColor3f(1.0, 1.0, 1.0);
+	else glColor3f(0.4, 0.4, 0.4);
 
 	if (type == Sphere) glutSolidSphere(sphere_size, 20, 20);
 	else if (type == Cube) {

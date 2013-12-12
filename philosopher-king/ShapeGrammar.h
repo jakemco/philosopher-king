@@ -29,10 +29,11 @@ public:
     static Vector4 maxVerts;
     static float scaleSize;
 
-private:
     static const int AWING = 0;
     static const int XWING = 1;
     static const int YWING = 2;
+    
+private:
 
     static const int DROID_TYPES = 3;
     static const int ENGINE_TYPES = 3;
@@ -49,12 +50,15 @@ private:
     static ObjReader engines[ENGINE_TYPES];
     static ObjReader fronts[FRONT_TYPES];
     static ObjReader wings[WING_TYPES];
-
+public:
+    
     static int droidPart;
     static int enginePart;
     static int frontPart;
     static int wingPart;
-
+    
+private:
+    
     static void designShip(int d, int e, int f, int w);
     static void render(ObjReader obj);
     static void renderLeftWing(ObjReader obj);

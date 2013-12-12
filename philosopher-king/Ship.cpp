@@ -61,16 +61,29 @@ void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
 
 		if (shooting && charge > 0.15) {
 			charge = 0;
-
-			Vector4 lStart = position + Vector4(-0.5, 0, 0);
-			Vector4 rStart = position + Vector4(0.5, 0, 0);
+            
+            float wingX = 0.5;
+            
+            if(ShapeGrammar::wingPart == ShapeGrammar::XWING )
+                wingX = 1.0;
+            
+			Vector4 lStart = position + Vector4(-wingX, 0, 0);
+			Vector4 rStart = position + Vector4(wingX, 0, 0);
 
 			Vector4 target = position + Vector4::normalize(destination - position) * 200;
 
 			Vector4 color(0.8, 0.4, 0.2);
-
-			this->lasers.insert(new Laser(lStart,target,color));
-			this->lasers.insert(new Laser(rStart, target, color));
+            
+            if(ShapeGrammar::wingPart == ShapeGrammar::XWING) {
+                Vector4 xDelta(0,0.3,0);
+                this->lasers.insert(new Laser(lStart + xDelta,target,color));
+                this->lasers.insert(new Laser(rStart + xDelta, target, color));
+                this->lasers.insert(new Laser(lStart - xDelta,target,color));
+                this->lasers.insert(new Laser(rStart - xDelta, target, color));
+            } else {
+                this->lasers.insert(new Laser(lStart,target,color));
+                this->lasers.insert(new Laser(rStart, target, color));
+            }
             
             blaster->play();
 		}
@@ -101,7 +114,7 @@ void Ship::render() {
     glScalef(1 / scale, 1 / scale, 1 / scale);
 
 	if (crashed) glColor3f(1.0, 0.2, 0.2);
-    else glColor3f(1,1,1);
+    else glColor3f((float)0xF2/(float)0xFF,(float)0xE7/(float)0xFF,(float)0x9B/(float)0xFF);
 
     ShapeGrammar::designShip();
     
