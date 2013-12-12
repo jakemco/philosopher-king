@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E308432D185A3E7200519BA0 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E308432C185A3E7200519BA0 /* sfml-audio.framework */; };
+		E3084332185A416C00519BA0 /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E308432E185A416C00519BA0 /* sfml-graphics.framework */; };
+		E3084333185A416C00519BA0 /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E308432F185A416C00519BA0 /* sfml-network.framework */; };
+		E3084334185A416C00519BA0 /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3084330185A416C00519BA0 /* sfml-system.framework */; };
+		E3084335185A416C00519BA0 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3084331185A416C00519BA0 /* sfml-window.framework */; };
+		E3084337185A41CC00519BA0 /* blaster.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = E3084336185A41C500519BA0 /* blaster.wav */; };
+		E309EDF8185A3DA40041D45E /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E309EDF7185A3DA40041D45E /* SFML.framework */; };
+		E309EDFA185A3E380041D45E /* music.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = E309EDF9185A3E2F0041D45E /* music.wav */; };
 		E317299918551ABA00EDA005 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299518551ABA00EDA005 /* InputManager.cpp */; };
 		E317299A18551ABA00EDA005 /* MoveableCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299718551ABA00EDA005 /* MoveableCamera.cpp */; };
 		E317299D18551B2400EDA005 /* FPSControls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E317299B18551B2400EDA005 /* FPSControls.cpp */; };
@@ -44,6 +52,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				E3084337185A41CC00519BA0 /* blaster.wav in CopyFiles */,
+				E309EDFA185A3E380041D45E /* music.wav in CopyFiles */,
 				E385B3DC1859AE7200F7D91A /* resources in CopyFiles */,
 				E385B39818599E4D00F7D91A /* stars.ppm in CopyFiles */,
 				E385B39918599E4D00F7D91A /* trench.ppm in CopyFiles */,
@@ -54,6 +64,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E308432C185A3E7200519BA0 /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "../../../../../../Library/Frameworks/sfml-audio.framework"; sourceTree = "<group>"; };
+		E308432E185A416C00519BA0 /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "../../../../../../Library/Frameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
+		E308432F185A416C00519BA0 /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "../../../../../../Library/Frameworks/sfml-network.framework"; sourceTree = "<group>"; };
+		E3084330185A416C00519BA0 /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "../../../../../../Library/Frameworks/sfml-system.framework"; sourceTree = "<group>"; };
+		E3084331185A416C00519BA0 /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../../../../../../Library/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
+		E3084336185A41C500519BA0 /* blaster.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = blaster.wav; path = "philosopher-king/blaster.wav"; sourceTree = "<group>"; };
+		E309EDF7185A3DA40041D45E /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
+		E309EDF9185A3E2F0041D45E /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = music.wav; path = "philosopher-king/music.wav"; sourceTree = "<group>"; };
 		E317299518551ABA00EDA005 /* InputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputManager.cpp; path = "philosopher-king/InputManager.cpp"; sourceTree = "<group>"; };
 		E317299618551ABA00EDA005 /* InputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputManager.h; path = "philosopher-king/InputManager.h"; sourceTree = "<group>"; };
 		E317299718551ABA00EDA005 /* MoveableCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveableCamera.cpp; sourceTree = "<group>"; };
@@ -111,6 +129,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3084332185A416C00519BA0 /* sfml-graphics.framework in Frameworks */,
+				E3084333185A416C00519BA0 /* sfml-network.framework in Frameworks */,
+				E3084334185A416C00519BA0 /* sfml-system.framework in Frameworks */,
+				E3084335185A416C00519BA0 /* sfml-window.framework in Frameworks */,
+				E308432D185A3E7200519BA0 /* sfml-audio.framework in Frameworks */,
+				E309EDF8185A3DA40041D45E /* SFML.framework in Frameworks */,
 				E3FECBA5183D76F4002BAC27 /* GLUT.framework in Frameworks */,
 				E3FECBA3183D76F0002BAC27 /* OpenGL.framework in Frameworks */,
 			);
@@ -149,6 +173,8 @@
 		E385B39718599E3400F7D91A /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				E3084336185A41C500519BA0 /* blaster.wav */,
+				E309EDF9185A3E2F0041D45E /* music.wav */,
 				E385B38A18599E2D00F7D91A /* stars.ppm */,
 				E385B38D18599E2E00F7D91A /* trench.ppm */,
 				E385B38E18599E2E00F7D91A /* yavin.ppm */,
@@ -217,6 +243,12 @@
 		E3FECBA6183D76F9002BAC27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E308432E185A416C00519BA0 /* sfml-graphics.framework */,
+				E308432F185A416C00519BA0 /* sfml-network.framework */,
+				E3084330185A416C00519BA0 /* sfml-system.framework */,
+				E3084331185A416C00519BA0 /* sfml-window.framework */,
+				E308432C185A3E7200519BA0 /* sfml-audio.framework */,
+				E309EDF7185A3DA40041D45E /* SFML.framework */,
 				E3FECBA4183D76F4002BAC27 /* GLUT.framework */,
 				E3FECBA2183D76F0002BAC27 /* OpenGL.framework */,
 			);
@@ -373,6 +405,10 @@
 		E3FECBA0183D765E002BAC27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";
@@ -382,6 +418,10 @@
 		E3FECBA1183D765E002BAC27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = "-Wno-deprecated-declarations";

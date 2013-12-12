@@ -23,9 +23,19 @@
 #include "ShapeGrammar.h"
 
 const float Ship::SPEED = 50.0f;
+sf::SoundBuffer Ship::buffer;
+
 
 Ship::Ship() {
+    if(buffer.getDuration().asSeconds() == 0)
+        buffer.loadFromFile("blaster.wav");
+    
+    blaster = new sf::Sound(buffer);
 	this->reset();
+}
+
+Ship::~Ship() {
+    if(blaster) delete blaster;
 }
 
 void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
@@ -42,18 +52,20 @@ void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
 
 		this->position += dir;
 
-		if (shooting && charge > 0.3) {
+		if (shooting && charge > 0.15) {
 			charge = 0;
 
 			Vector4 lStart = position + Vector4(-0.5, 0, 0);
 			Vector4 rStart = position + Vector4(0.5, 0, 0);
 
-			Vector4 target = position + Vector4(0, 0, -200);
+			Vector4 target = position + Vector4::normalize(destination - position) * 200;
 
 			Vector4 color(0.8, 0.4, 0.2);
 
 			this->lasers.insert(new Laser(lStart,target,color));
 			this->lasers.insert(new Laser(rStart, target, color));
+            
+            blaster->play();
 		}
 
 		std::set<Laser*> trash;

@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <SFML/Audio.hpp>
+
 #include <set>
 
 #include "Vector4.h"
@@ -24,6 +26,9 @@ private:
 	bool crashed;
 
 	float charge;
+    
+    static sf::SoundBuffer buffer;
+    sf::Sound* blaster;
 
 	std::set<Laser*> lasers;
 
@@ -31,6 +36,7 @@ public:
 	static const float SPEED;
     
     Ship();
+    ~Ship();
     
     void update(float, float, float, float, bool);
     void render();

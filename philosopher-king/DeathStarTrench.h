@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <SFML/Audio.hpp>
+
 #include "WorldManager.h"
 
 #include "FlightControls.h"
@@ -25,6 +27,7 @@ private:
 	RandomTrench* trench;
 	Shader* targetingShader;
 	bool targetingShaderEnabled;
+    sf::Music music;
     
     float trenchSize;
 

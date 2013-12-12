@@ -15,6 +15,7 @@
 #include "GLUT/glut.h"
 #endif
 
+
 #include <iostream>
 #include <algorithm>
 #include <cmath>
@@ -55,6 +56,10 @@ void DeathStarTrench::init() {
 		"resources/shaders/targeting.vert",
 		"resources/shaders/targeting.frag",
 		true);
+    
+    music.openFromFile("music.wav");
+    music.setLoop(true);
+    music.play();
 }
 
 void DeathStarTrench::update(float dt) {

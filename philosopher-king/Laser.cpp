@@ -6,6 +6,7 @@
   #include "GLUT/glut.h"
 #endif
 
+
 #define _USE_MATH_DEFINES
 #include <cmath>
 
@@ -15,12 +16,16 @@ const float Laser::SPEED = 100.0f;
 
 Laser::Laser(const Vector4& start, const Vector4& target, const Vector4& color) : start(start)
 {
+    
+
 	this->color = color;
 	this->position = start;
 	this->direction = Vector4::normalize(target - start);
 }
 
-Laser::Laser(const Vector4& s, const Vector4& t) : Laser(s, t, Vector4(0, 1, 0)) {}
+Laser::Laser(const Vector4& s, const Vector4& t) : Laser(s, t, Vector4(0, 1, 0)) {
+    
+}
 
 
 Laser::~Laser()

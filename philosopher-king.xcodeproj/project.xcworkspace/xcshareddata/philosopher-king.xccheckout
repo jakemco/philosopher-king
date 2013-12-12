@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>222FB888-F331-414C-8C8D-9F357974E1B4</string>
+	<string>0E8BE90A-894F-4DAD-B896-E7165E790A1E</string>
 	<key>IDESourceControlProjectName</key>
 	<string>philosopher-king</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>ssh://github.com/jakemask/philosopher-king.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>philosopher-king/philosopher-king.xcodeproj/project.xcworkspace</string>
+	<string>philosopher-king.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C370BD9D-77E6-4102-9C73-7857DBCC7DFC</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/jakemask/philosopher-king.git</string>
