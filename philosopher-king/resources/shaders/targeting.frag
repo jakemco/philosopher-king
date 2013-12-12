@@ -13,7 +13,7 @@ void main()
 	
 	edge = max(dot(n, nEyeToVert), 0.0);
 	
-	if (edge < 0.3) {
+	if (edge < 0.5) {
 		color = vec4(0.0, 0.0, 0.0, 1.0);
 	} else {
 	
@@ -23,11 +23,11 @@ void main()
 		
 		if (NdotL > 0.0) {
 			if (NdotL < 0.1) {
-				NdotL = 0.0;
-			} else if (NdotL < 0.3) {
 				NdotL = 0.1;
-			} else if (NdotL < 0.5) {
+			} else if (NdotL < 0.3) {
 				NdotL = 0.3;
+			} else if (NdotL < 0.5) {
+				NdotL = 0.5;
 			} else if (NdotL < 0.9) {
 				NdotL = 0.5;
 			}
@@ -38,7 +38,7 @@ void main()
 	
 	if (length(eyeToVert) < 100.0) {
 		if (mod(worldPos.y + 1.0 + ship.y, 4.0) < 0.1 ||
-			mod(worldPos.x + 4.5 + ship.x, 9.0) < 0.1 ||
+			mod(worldPos.x + 4.0 + ship.x, 8.0) < 0.1 ||
 			mod(worldPos.z + ship.z, 10.0) < 0.1) {
 			color = vec4(1.0, 1.0, 0.5, 1.0);
 		}

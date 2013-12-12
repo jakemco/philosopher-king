@@ -92,7 +92,7 @@ int Window::main(int argc, char * argv[])
     
     float specular[]  = {1.0, 1.0, 1.0, 1.0};
     float shininess[] = {100.0};
-    float position[]  = {0.0, 10.0, 1.0, 0.0};
+    float position[]  = {0.0, 10.0, 5.0, 0.0};
     
     // Generate material properties:
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular);
