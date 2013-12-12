@@ -24,6 +24,11 @@ ULONG NameToBthAddr(_In_ const LPWSTR pszRemoteName, _Out_ PSOCKADDR_BTH pRemote
 #define PITCH_OFFSET 1
 #define ROLL_OFFSET 2
 
+#define FIRIN_MAH_LASER_FRAME_ID 42
+#define LASER_VALUE_OFFSET 1
+
+#define TOGGLE_TARGETING_FRAME_ID 1337
+
 // During normal wearing of glass, it points up a little bit. Correct for that.
 #define PITCH_CORRECTION 0.164
 
@@ -40,6 +45,8 @@ GlassControls::GlassControls() {
 	this->pitchZero = PITCH_CORRECTION;
 	this->roll = 0;
 	this->btReadThread = nullptr;
+	this->fireLasers = false;
+	this->shouldToggleTargetingValue = false;
 }
 
 
@@ -89,6 +96,23 @@ float GlassControls::getPitch() {
 
 float GlassControls::getRoll() {
 	return this->roll;
+}
+
+bool GlassControls::getLasersFired() {
+	return this->fireLasers;
+}
+
+void GlassControls::resetLasers() {
+	this->fireLasers = false;
+}
+
+
+bool GlassControls::shouldToggleTargeting() {
+	return this->shouldToggleTargetingValue;
+}
+
+void GlassControls::resetToggleTargeting() {
+	this->shouldToggleTargetingValue = false;
 }
 
 float GlassControls::getInterpolatedY() {
@@ -187,6 +211,18 @@ ULONG GlassControls::bluetoothLoop(SOCKADDR_BTH remoteAddr) {
 					this->roll = ((float *)incomingData)[readPos + ROLL_OFFSET];
 
 					//printf("got frame: pitch: %f, roll %f\n", pitch, roll);
+				}
+				else if (frameId == FIRIN_MAH_LASER_FRAME_ID) {
+					int value = ((int *)incomingData)[readPos + LASER_VALUE_OFFSET];
+					if (value) {
+						this->fireLasers = true;
+					}
+
+					//printf("got laser frame: value: %d\n", value);
+				}
+				else if (frameId == TOGGLE_TARGETING_FRAME_ID) {
+					this->shouldToggleTargetingValue = true;
+					//printf("got toggle frame\n");
 				}
 			}
 

@@ -54,7 +54,14 @@ void FlightControls::mouseCallback(int button, int state, int x, int y) {
 		shooting = false;
 }
 
-bool FlightControls::isShooting() { return shooting; }
+bool FlightControls::isShooting() { 
+	if (useGlass && glassOverride->getLasersFired()) {
+		glassOverride->resetLasers();
+		return true;
+	}
+
+	return shooting;
+}
 
 void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
@@ -100,5 +107,10 @@ float FlightControls::getY() {
 }
 
 bool FlightControls::getTargetingComputerOn() {
+	if (this->useGlass && this->glassOverride->shouldToggleTargeting()) {
+		this->targetingComputerOn = !this->targetingComputerOn;
+		this->glassOverride->resetToggleTargeting();
+	}
+
 	return this->targetingComputerOn;
 }
