@@ -26,6 +26,8 @@ void Hud::update(float dt, float size, const Ship& ship) {
     burst = ship.getBurst();
     over = ship.getPosition().y() > size/2;
     cooldown = ship.onCooldown();
+    
+    dist = abs(ship.getPosition().z());
 }
 
 void Hud::render() {
@@ -83,6 +85,18 @@ void Hud::render() {
 
     
     glEnd();
+    
+    char buf[BUFSIZ];
+    snprintf(buf, BUFSIZ, "Score: %4.4d",dist);
+    
+    glColor3f(1,1,1);
+    glRasterPos2f(Window::width-120, Window::height - 20);
+    
+    char* p = buf;
+    while(*p != 0)
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *p++);
+        
+
     
     /* DRAW ABOVE HERE */
     glEnable(GL_LIGHTING);

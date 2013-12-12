@@ -15,6 +15,9 @@ private:
     float burst;
     bool over;
     bool cooldown;
+    
+    int dist;
+    
 public:
     void update(float, float, const Ship&);
     void render();
