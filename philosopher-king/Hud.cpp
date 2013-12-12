@@ -51,14 +51,14 @@ void Hud::render() {
         
         glColor3f(1.0f, 0.0f, 0.0);
         glVertex2f(10.0, 10.0);
-        glVertex2f(110,10.0);
-        glVertex2f(110,110.0);
-        glVertex2f(10.0,110.0);
+        glVertex2f(10 + Window::width/6,10.0);
+        glVertex2f(10 + Window::width/6,10 + Window::width/6);
+        glVertex2f(10.0,10 + Window::width/6);
         
-        glVertex2f(Window::width - 110, 10);
+        glVertex2f(Window::width - 10 - Window::width/6, 10);
         glVertex2f(Window::width - 10,10.0);
-        glVertex2f(Window::width - 10,110.0);
-        glVertex2f(Window::width - 110,110.0);
+        glVertex2f(Window::width - 10,10 + Window::width/6);
+        glVertex2f(Window::width - 10 - Window::width/6,10 + Window::width/6);
         
         glEnd();
     }
@@ -71,8 +71,8 @@ void Hud::render() {
     else glColor3f(0.8,0.8,0.8);
     
     glVertex2f(10, Window::height - 10);
-    glVertex2f( 10 + 200 * (burst < 0 ? 0 : burst) / Ship::RECHARGE , Window::height -10);
-    glVertex2f( 10 + 200 * (burst < 0 ? 0 : burst) / Ship::RECHARGE , Window::height -50);
+    glVertex2f( 10 + (Window::width/2) * (burst < 0 ? 0 : burst) / Ship::RECHARGE , Window::height -10);
+    glVertex2f( 10 + (Window::width/2) * (burst < 0 ? 0 : burst) / Ship::RECHARGE , Window::height -50);
     glVertex2f(10, Window::height - 50);
 
     
