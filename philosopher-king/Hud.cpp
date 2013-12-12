@@ -19,7 +19,7 @@
 #include <iostream>
 
 #include "Hud.h"
-
+#include "Texture.h"
 #include "Window.h"
 
 void Hud::update(float dt, float size, const Ship& ship) {
@@ -47,20 +47,26 @@ void Hud::render() {
     /* DRAW BELOW HERE */
     
     if(over) {
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, Texture::textures[ALERT_BLACK_TEXTURE]);
         glBegin(GL_QUADS);
         
-        glColor3f(1.0f, 0.0f, 0.0);
-        glVertex2f(10.0, 10.0);
-        glVertex2f(10 + Window::width/6,10.0);
-        glVertex2f(10 + Window::width/6,10 + Window::width/6);
-        glVertex2f(10.0,10 + Window::width/6);
+        //glColor3f(1.0f, 0.0f, 0.0);
+        glColor4f(1.0, 0.0, 0.0, 0.0);
+
+        glTexCoord2d(0, 0); glVertex2f(10.0, 10.0);
+        glTexCoord2d(1, 0); glVertex2f(10 + Window::width/6,10.0);
+        glTexCoord2d(1, 1); glVertex2f(10 + Window::width/6,10 + Window::width/6);
+        glTexCoord2d(0, 1); glVertex2f(10.0,10 + Window::width/6);
         
-        glVertex2f(Window::width - 10 - Window::width/6, 10);
-        glVertex2f(Window::width - 10,10.0);
-        glVertex2f(Window::width - 10,10 + Window::width/6);
-        glVertex2f(Window::width - 10 - Window::width/6,10 + Window::width/6);
+        glTexCoord2d(0, 0); glVertex2f(Window::width - 10 - Window::width/6, 10);
+        glTexCoord2d(1, 0); glVertex2f(Window::width - 10,10.0);
+        glTexCoord2d(1, 1); glVertex2f(Window::width - 10,10 + Window::width/6);
+        glTexCoord2d(0, 1); glVertex2f(Window::width - 10 - Window::width/6,10 + Window::width/6);
         
         glEnd();
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, NULL);
     }
     
     

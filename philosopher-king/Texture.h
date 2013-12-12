@@ -15,7 +15,9 @@
 
 #define BG_TEXTURE 0
 #define TRENCH_TEXTURE 1
-#define MAX_MAPS 2 // last texture id + 1
+#define ALERT_BLACK_TEXTURE 2
+#define ALERT_TRANS_TEXTURE 3
+#define MAX_MAPS 4 // last texture id + 1
 
 class Texture {
 public:

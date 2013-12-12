@@ -85,7 +85,7 @@ void Texture::loadTexture(int index)
     if (data[index] == NULL) return;
 
     glBindTexture(GL_TEXTURE_2D, textures[index]);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, width[index], height[index], 0, GL_RGB, GL_UNSIGNED_BYTE, data[index]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, width[index], height[index], 0,GL_RGB, GL_UNSIGNED_BYTE, data[index]);
     //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

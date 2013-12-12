@@ -51,6 +51,10 @@ void DeathStarTrench::init() {
     glGenTextures(MAX_MAPS, &Texture::textures[0]);
     Texture::loadPPM("yavin.ppm", BG_TEXTURE);
     Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
+    Texture::loadPPM("red_alert_black.ppm", ALERT_BLACK_TEXTURE);
+    Texture::loadPPM("red_alert_transparent.ppm", ALERT_TRANS_TEXTURE);
+    Texture::loadTexture(ALERT_BLACK_TEXTURE);
+    Texture::loadTexture(ALERT_TRANS_TEXTURE);
 
 	this->targetingShader = new Shader(
 		"resources/shaders/targeting.vert",
