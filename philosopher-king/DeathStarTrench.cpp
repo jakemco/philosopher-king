@@ -25,7 +25,10 @@
 #include "Texture.h"
 
 #define DRAW_DIST 1000
-#define TEX_SIZE 10
+#define TEX_SIZE 20
+#define SURFACE_TEX_SIZE 5
+#define SIDE_TEX_SIZE 2
+#define BOTTOM_TEX_SIZE 1
 
 DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
     this->camera = new MoveableCamera(Vector4(0, 0, 20, 1), Vector4(0, 0, 0, 1), Vector4(0, 1, 0));
@@ -36,9 +39,8 @@ DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
     this->trenchHeight = 10;
     this->trenchWidth = 10;
 
-    
     Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
-    
+
 }
 
 void DeathStarTrench::update(float dt) {
@@ -63,78 +65,58 @@ void DeathStarTrench::render() {
 
     static const float x = trenchWidth / 2.0;
     static const float y = trenchHeight / 2.0;
-    static float last_depth = position.z();
 
+    glEnable(GL_TEXTURE_2D);
     Texture::loadTexture(TRENCH_TEXTURE);
-    for (int i = 0; i < DRAW_DIST; i++) {
-        float depth = position.z() - i;
+    glColor3f(1, 1, 1);
+    float nearPoint = position.z();
+    std::cout << "Position: " << nearPoint << std::endl;
 
-        /* Draw Trench */
-        glEnable(GL_TEXTURE_2D);
-        glColor3f(1, 1, 1);
-        
-        glBegin(GL_QUAD_STRIP);
+    float farPoint = nearPoint - DRAW_DIST;
 
-        float fore = fmod(depth, TEX_SIZE) / TEX_SIZE;
-        float back = fmod(depth + 1.0, TEX_SIZE) / TEX_SIZE;
+    float nearTex = fmod(nearPoint, TEX_SIZE) / TEX_SIZE;
+    float farTex = farPoint / TEX_SIZE;
 
-        glNormal3f(0, 1, 0);
-        for (float j = -100; j < -x; j += TEX_SIZE) {
-            float j2 = fmin(j + TEX_SIZE, -x);
-            glTexCoord2f(0, fore);
-            glVertex3f(j, y, depth);
-            glTexCoord2f(0, back);
-            glVertex3f(j, y, depth - 1);
-            glTexCoord2f(1, fore);
-            glVertex3f(j2, y, depth);
-            glTexCoord2f(1, back);
-            glVertex3f(j2, y, depth - 1);
-        }
+    glBegin(GL_QUADS);  // Death Star surface -- left
+    glNormal3f(0, 1, 0);
+    glTexCoord2f(0, nearTex); glVertex3f(-100, y, nearPoint);
+    glTexCoord2f(0, farTex); glVertex3f(-100, y, farPoint);
+    glTexCoord2f(SURFACE_TEX_SIZE, nearTex); glVertex3f(-x, y, nearPoint);
+    glTexCoord2f(SURFACE_TEX_SIZE, farTex); glVertex3f(-x, y, farPoint);
+    glEnd();
 
-        glNormal3f(1, 0, 0);
-        glTexCoord2f(0, fore);
-        glVertex3f(-x, y, depth);
-        glTexCoord2f(0, back);
-        glVertex3f(-x, y, depth - 1);
-        glTexCoord2f(1, fore);
-        glVertex3f(-x, -y, depth);
-        glTexCoord2f(1, back);
-        glVertex3f(-x, -y, depth - 1);
+    glBegin(GL_QUADS); // trench surface -- left
+    glNormal3f(1, 0, 0);
+    glTexCoord2f(0, nearTex); glVertex3f(-x, y, nearPoint);
+    glTexCoord2f(0, farTex); glVertex3f(-x, y, farPoint);
+    glTexCoord2f(SIDE_TEX_SIZE, nearTex); glVertex3f(-x, -y, nearPoint);
+    glTexCoord2f(SIDE_TEX_SIZE, farTex); glVertex3f(-x, -y, farPoint);
+    glEnd();
 
-        glNormal3f(0, 1, 0);
-        glTexCoord2f(0, fore);
-        glVertex3f(-x, -y, depth);
-        glTexCoord2f(0, back);
-        glVertex3f(-x, -y, depth - 1);
-        glTexCoord2f(1, 0);
-        glVertex3f(x, -y, depth);
-        glTexCoord2f(1, back);
-        glVertex3f(x, -y, depth - 1);
+    glBegin(GL_QUADS); // trench surface -- bottom
+    glNormal3f(0, 1, 0);
+    glTexCoord2f(0, nearTex); glVertex3f(-x, -y, nearPoint);
+    glTexCoord2f(0, farTex); glVertex3f(-x, -y, farPoint);
+    glTexCoord2f(BOTTOM_TEX_SIZE, nearTex); glVertex3f(x, -y, nearPoint);
+    glTexCoord2f(BOTTOM_TEX_SIZE, farTex); glVertex3f(x, -y, farPoint);
+    glEnd();
 
-        glNormal3f(-1, 0, 0);
-        glTexCoord2f(0, fore);
-        glVertex3f(x, -y, depth);
-        glTexCoord2f(0, back);
-        glVertex3f(x, -y, depth - 1);
-        glTexCoord2f(1, fore);
-        glVertex3f(x, y, depth);
-        glTexCoord2f(1, back);
-        glVertex3f(x, y, depth - 1);
+    glBegin(GL_QUADS); // trench surfacee -- right
+    glNormal3f(-1, 0, 0);
+    glTexCoord2f(0, nearTex); glVertex3f(x, -y, nearPoint);
+    glTexCoord2f(0, farTex); glVertex3f(x, -y, farPoint);
+    glTexCoord2f(SIDE_TEX_SIZE, nearTex); glVertex3f(x, y, nearPoint);
+    glTexCoord2f(SIDE_TEX_SIZE, farTex); glVertex3f(x, y, farPoint);
+    glEnd();
 
-        glNormal3f(0, 1, 0);
-        for (float j = x; j < 100; j += TEX_SIZE) {
-            float j2 = fmin(j + TEX_SIZE, 100);
-            glTexCoord2f(0, fore);
-            glVertex3f(j, y, depth);
-            glTexCoord2f(0, back);
-            glVertex3f(j, y, depth - 1);
-            glTexCoord2f(1, fore);
-            glVertex3f(j2, y, depth);
-            glTexCoord2f(1, back);
-            glVertex3f(j2, y, depth - 1);
-        }
+    glBegin(GL_QUADS); // Death Star surface -- right
+    glNormal3f(0, 1, 0);
+    glTexCoord2f(0, nearTex); glVertex3f(x, y, nearPoint);
+    glTexCoord2f(0, farTex); glVertex3f(x, y, farPoint);
+    glTexCoord2f(SURFACE_TEX_SIZE, nearTex); glVertex3f(100, y, nearPoint);
+    glTexCoord2f(SURFACE_TEX_SIZE, farTex); glVertex3f(100, y, farPoint);
+    glEnd();
 
-        glEnd();
-        glDisable(GL_TEXTURE_2D);
-    }
+    glBindTexture(GL_TEXTURE_2D, NULL);
+    glDisable(GL_TEXTURE_2D);
 }
