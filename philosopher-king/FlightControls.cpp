@@ -30,6 +30,7 @@ FlightControls::FlightControls(WorldManager* gc) : InputManager() {
 	this->glassOverride->connectToGlass();
 
 	this->gameController = gc;
+    this->shooting = false;
 }
 
 void FlightControls::passiveMotionCallback(int x, int y) {

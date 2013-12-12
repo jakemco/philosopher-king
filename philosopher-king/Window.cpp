@@ -117,6 +117,8 @@ int Window::main(int argc, char * argv[])
 #ifdef FULLSCREEN
 	glutFullScreen();
 #endif
+    
+    Window::world->init();
 
 	glutMainLoop();
 	return 0;

@@ -29,7 +29,9 @@ ULONG NameToBthAddr(_In_ const LPWSTR pszRemoteName, _Out_ PSOCKADDR_BTH pRemote
 
 // The guid of the bt service
 // a2b6fe70-614b-11e3-949a-0800200c9a66
+#ifdef WIN32
 DEFINE_GUID(g_guidServiceClass, 0xa2b6fe70, 0x614b, 0x11e3, 0x94, 0x9a, 0x08, 0x00, 0x20, 0x0c, 0x9a, 0x66);
+#endif
 
 #define GLASS_NAME L"Zach Johnson's Glass"
 

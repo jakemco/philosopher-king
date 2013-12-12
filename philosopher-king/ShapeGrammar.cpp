@@ -9,21 +9,21 @@
 #endif
 
 char* ShapeGrammar::namesDroids[DROID_TYPES] = {
-    "../resources/models/objects/awing_droid.obj",
-    "../resources/models/objects/xwing_droid.obj",
-    "../resources/models/objects/ywing_droid.obj"};
+    "resources/models/objects/awing_droid.obj",
+    "resources/models/objects/xwing_droid.obj",
+    "resources/models/objects/ywing_droid.obj"};
 char* ShapeGrammar::namesEngines[ENGINE_TYPES] = {
-    "../resources/models/objects/awing_engine.obj",
-    "../resources/models/objects/xwing_engine.obj",
-    "../resources/models/objects/ywing_engine.obj"};
+    "resources/models/objects/awing_engine.obj",
+    "resources/models/objects/xwing_engine.obj",
+    "resources/models/objects/ywing_engine.obj"};
 char* ShapeGrammar::namesFront[FRONT_TYPES] = {
-    "../resources/models/objects/awing_front.obj",
-    "../resources/models/objects/xwing_front.obj",
-    "../resources/models/objects/ywing_front.obj" };
+    "resources/models/objects/awing_front.obj",
+    "resources/models/objects/xwing_front.obj",
+    "resources/models/objects/ywing_front.obj" };
 char* ShapeGrammar::namesWings[WING_TYPES] = {
-    "../resources/models/objects/awing_wing.obj",
-    "../resources/models/objects/xwing_wing.obj",
-    "../resources/models/objects/ywing_wing.obj" };
+    "resources/models/objects/awing_wing.obj",
+    "resources/models/objects/xwing_wing.obj",
+    "resources/models/objects/ywing_wing.obj" };
 
 ObjReader ShapeGrammar::droids[DROID_TYPES];
 ObjReader ShapeGrammar::engines[ENGINE_TYPES];

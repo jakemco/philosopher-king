@@ -2,7 +2,13 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <GL/glut.h>
+
+#ifdef WIN32
+  #include <GL/glut.h>
+#else
+  #include <GLUT/glut.h>
+#endif
+
 #include <math.h>
 #include <iostream>
 

@@ -42,6 +42,10 @@ DeathStarTrench::DeathStarTrench() {
 	this->trenchSize = 10;
 	this->trench = new RandomTrench(trenchSize);
 
+    
+}
+
+void DeathStarTrench::init() {
     glGenTextures(MAX_MAPS, &Texture::textures[0]);
     Texture::loadPPM("yavin.ppm", BG_TEXTURE);
     Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);

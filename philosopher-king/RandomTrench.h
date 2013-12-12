@@ -20,7 +20,11 @@ private:
 	std::set<Laser*> lasers;
 
 	bool above;
+#ifdef WIN32
 	std::chrono::time_point<std::chrono::system_clock> above_t;
+#else
+    std::chrono::time_point<std::chrono::steady_clock> above_t;
+#endif
 
 	float ticks;
 
