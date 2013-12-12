@@ -6,6 +6,7 @@
 #include "GLUT/glut.h"
 #endif
 
+#include <algorithm>
 #include <iostream>
 #include <ctime>
 #include <set>
@@ -14,7 +15,11 @@
 
 #include "Texture.h"
 
+#define RAND_FLOAT(min,max) ((min) + (((float)rand()/(float)RAND_MAX)*((max) - (min))))
+
 #define CHANCE_BUILDING 0.05f
+
+#define LASERS_PER_SECOND 30
 
 #define DRAW_DIST 1000
 #define TEX_SIZE 20
@@ -32,15 +37,15 @@ RandomTrench::RandomTrench(float size)
 
 RandomTrench::~RandomTrench()
 {
-	for (std::pair<int,Building*> b : this->buildings) {
-		delete b.second;
-	}
+	for (std::pair<int,Building*> b : this->buildings) delete b.second;
+	for (Laser* l : this->lasers) delete l;
 }
 
 
-void RandomTrench::update(int z, int d)
+void RandomTrench::update(float dt, const Vector4& position, int d)
 {
-	z = abs(z);
+
+	float z = abs(position.z());
 
 	if (z+d > start+depth) {
 		for (int i = start + depth; i < z + d; i++) {
@@ -58,6 +63,27 @@ void RandomTrench::update(int z, int d)
 
 	this->start = z;
 	this->depth = d;
+
+	/* lasers! */
+
+	for (int i = 0; i < dt*LASERS_PER_SECOND; i++) {
+		Vector4 p = Vector4(RAND_FLOAT(-1, 1)*RAND_FLOAT(size / 2, 50), size / 2.0, position.z() - RAND_FLOAT(0, 200), 1);
+		Vector4 t = Vector4(position.x() + RAND_FLOAT(-5, 5), std::max((float) position.y(), size / 2) + RAND_FLOAT(0, 10), position.z() - Ship::SPEED / 2 - RAND_FLOAT(0, 10), 1);
+
+		lasers.insert(new Laser(p, t));
+	}
+
+	std::set<Laser*> things;
+
+	for (Laser* l : lasers) {
+		l->update(dt);
+		if (l->getPosition().y() > 250) things.insert(l);
+	}
+
+	for (Laser* l : things) {
+		lasers.erase(l);
+		delete l;
+	}
 
 }
 
@@ -79,6 +105,9 @@ void RandomTrench::render()
 		this->buildings.erase(abs(b->getDepth()));
 		delete b;
 	}
+
+	/* lasers */
+	for (Laser* l : lasers) l->render();
 
 	/* Draw dat trench */
 

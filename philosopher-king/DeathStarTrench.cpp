@@ -53,7 +53,7 @@ void DeathStarTrench::update(float dt) {
     position[2] = ship.getPosition().z() + 7;
     mCamera->setPosition(position);
 
-    this->trench->update(position.z(), DRAW_DIST);
+    this->trench->update(dt, position, DRAW_DIST);
 
     if (this->trench->collision(ship)) ship.crash();
 }

@@ -13,13 +13,13 @@
 
 class Ship {
 private:
-    static const float SPEED;
     Vector4 position;
 	Vector4 rotate;
 	float angle;
 
 	bool crashed;
 public:
+	static const float SPEED;
     
     Ship();
     

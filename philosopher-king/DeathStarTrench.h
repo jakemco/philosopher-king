@@ -24,7 +24,7 @@ private:
 	RandomTrench* trench;
     
     float trenchSize;
-    
+
 public:
     
     DeathStarTrench();
