@@ -84,6 +84,7 @@ int Window::main(int argc, char * argv[])
 	glDisable(GL_CULL_FACE);     // disable backface culling to render both sides of polygons
 	glShadeModel(GL_SMOOTH);             	      // set shading to smooth
 	glMatrixMode(GL_PROJECTION);
+	glEnable(GL_NORMALIZE);
     
     float specular[]  = {1.0, 1.0, 1.0, 1.0};
     float shininess[] = {100.0};

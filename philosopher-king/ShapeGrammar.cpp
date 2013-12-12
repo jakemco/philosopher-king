@@ -139,6 +139,13 @@ void ShapeGrammar::renderLeftWing(ObjReader obj) {
         float y = obj.getVertices()[3*obj.getIndices()[i]+1];
         float z = obj.getVertices()[3*obj.getIndices()[i]+2];
         glVertex3f(x, y, z);
+
+		if (obj.getNormals() != nullptr) {
+			float normalX = obj.getNormals()[3 * obj.getIndices()[i]];
+			float normalY = obj.getNormals()[3 * obj.getIndices()[i] + 1];
+			float normalZ = obj.getNormals()[3 * obj.getIndices()[i] + 2];
+			glNormal3f(normalX, normalY, normalZ);
+		}
     }
     glEnd();
 }
