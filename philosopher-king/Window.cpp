@@ -26,6 +26,7 @@
 #include "Matrix4.h"
 #include "InputManager.h"
 
+// #define FULLSCREEN
 
 //=========================================//
 
@@ -113,6 +114,10 @@ int Window::main(int argc, char * argv[])
 	glutPassiveMotionFunc([](int x, int y) { Window::input->passiveMotionCallback(x,y); });
     glutMotionFunc([](int x, int y) { Window::input->activeMotionCallback(x,y); });
     
+#ifdef FULLSCREEN
+	glutFullScreen();
+#endif
+
 	glutMainLoop();
 	return 0;
 }
