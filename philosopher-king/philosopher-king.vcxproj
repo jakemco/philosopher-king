@@ -89,6 +89,7 @@
     <ClCompile Include="FPSControls.cpp" />
     <ClCompile Include="GlassControls.cpp" />
     <ClCompile Include="GLee.c" />
+    <ClCompile Include="Hud.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="FPSControls.h" />
     <ClInclude Include="GlassControls.h" />
     <ClInclude Include="GLee.h" />
+    <ClInclude Include="Hud.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="MoveableCamera.h" />

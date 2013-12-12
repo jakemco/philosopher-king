@@ -98,7 +98,6 @@ void DeathStarTrench::update(float dt) {
 
 void DeathStarTrench::render() {
 
-    ship.render();
     Texture::loadTexture(TRENCH_TEXTURE);
     trench->render();
     glBindTexture(GL_TEXTURE_2D, NULL);
@@ -128,8 +127,17 @@ void DeathStarTrench::render() {
     glEnable(GL_LIGHTING);
     
     /* RENDER HUD LAST */
+
+	if (targetingShaderEnabled) {
+		targetingShader->unbind();
+	}
     
+    ship.render();
     hud.render();
+
+	if (targetingShaderEnabled) {
+		targetingShader->bind();
+	}
 }
 
 void DeathStarTrench::reset() {
