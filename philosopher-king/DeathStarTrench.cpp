@@ -31,6 +31,9 @@
 #define BOTTOM_TEX_SIZE 1
 
 DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
+
+	srand(time(NULL));
+
     this->camera = new MoveableCamera(Vector4(0, 0, 20, 1), Vector4(0, 0, 0, 1), Vector4(0, 1, 0));
     this->mCamera = (MoveableCamera*)this->camera;
 
@@ -70,11 +73,10 @@ void DeathStarTrench::render() {
     Texture::loadTexture(TRENCH_TEXTURE);
     glColor3f(1, 1, 1);
     float nearPoint = position.z();
-    std::cout << "Position: " << nearPoint << std::endl;
 
     float farPoint = nearPoint - DRAW_DIST;
 
-    float nearTex = fmod(nearPoint, TEX_SIZE) / TEX_SIZE;
+    float nearTex = nearPoint / TEX_SIZE;
     float farTex = farPoint / TEX_SIZE;
 
     glBegin(GL_QUADS);  // Death Star surface -- left
