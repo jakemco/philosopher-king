@@ -48,8 +48,11 @@ void RandomTrench::update(int z, int d)
 			float hasBuilding = (float) rand() / (float) RAND_MAX;
 
 			if (hasBuilding < CHANCE_BUILDING) {
-				this->buildings[i] = new Building(-i,size);
-			} 
+				this->buildings[i] = new Building(-i, size, 3, size, 10, true);
+			}
+			else if (hasBuilding < 0.8) {
+				this->buildings[i] = new Building(-i, size, 5, 0.1, 5, false);
+			}
 		}// end loop
 	}//end depth check
 

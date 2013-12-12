@@ -14,14 +14,16 @@
 
 #define RAND_FLOAT(min,max) ((min) + (((float)rand()/(float)RAND_MAX)*((max) - (min))))
 
-Building::Building(int d, float size)
+Building::Building(int d, float size, float width, float height, float depth, bool allow_sphere)
 {
-	float x = RAND_FLOAT(1, 10);
-	float y = RAND_FLOAT(1, 3);
-	float h = RAND_FLOAT(1, size);
+	this->wall_part = !allow_sphere;
+
+	float x = RAND_FLOAT(1, depth);
+	float y = RAND_FLOAT(1, width);
+	float h = RAND_FLOAT(1, height);
+
 	float t = RAND_FLOAT(0, 1);
-	
-	if (t < 0.4) {
+	if (allow_sphere && t < 0.4) {
 		type = Sphere;
 		sphere_size = RAND_FLOAT(0.5, 2);
 	}
@@ -80,6 +82,11 @@ void Building::draw() const {
 	glTranslatef(position.x(), position.y(), position.z());
 
 	if (crashed) glColor3f(1.0, 0.2, 0.2);
+	else if (wall_part)
+	{
+		/* TODO - Amy, texture this with wall plz? */
+		glColor3f(0.1, 0.1, 0.1);
+	}
 	else glColor3f(1.0, 1.0, 1.0);
 
 	if (type == Sphere) glutSolidSphere(sphere_size, 20, 20);

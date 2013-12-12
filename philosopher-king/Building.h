@@ -11,12 +11,14 @@ private:
 
 	float sphere_size;
 
+	bool wall_part;
+
 	enum { Sphere , Cube  } type;
 
 	bool crashed;
 
 public:
-	Building(int d, float size);
+	Building(int d, float size,float,float,float,bool);
 	~Building();
 
 	Vector4 getPosition() const;
@@ -27,8 +29,4 @@ public:
 
 	void crash() { crashed = true; }
 };
-
-inline bool operator>(const Building& a, const Building& b) {
-	return a.getDepth() > b.getDepth();
-}
 
