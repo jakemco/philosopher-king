@@ -36,6 +36,6 @@ public:
     float getY();
 
 	bool isShooting();
-    
+	bool getTargetingComputerOn();
     
 };

@@ -14,6 +14,7 @@
 #include "Ship.h"
 #include "MoveableCamera.h"
 #include "RandomTrench.h"
+#include "shader.h"
 
 class DeathStarTrench : public WorldManager {
     
@@ -22,6 +23,8 @@ private:
     FlightControls* controls;
     Ship ship;
 	RandomTrench* trench;
+	Shader* targetingShader;
+	bool targetingShaderEnabled;
     
     float trenchSize;
 

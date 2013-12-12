@@ -8,16 +8,16 @@ void main()
 	vec4 color = gl_LightModel.ambient * gl_FrontMaterial.ambient;
 	
 	vec3 n,halfV;
-	float NdotL,NdotHV;
+	float NdotL,NdotHV,edge;
 	n = normalize(normal);
 	
-	float edge = max(dot(n, nEyeToVert), 0);
+	edge = max(dot(n, nEyeToVert), 0.0);
 	
 	if (edge < 0.3) {
-		color = vec4(0, 0, 0, 1);
+		color = vec4(0.0, 0.0, 0.0, 1.0);
 	} else {
 	
-		color += gl_FrontMaterial.ambient * gl_LightSource[0].ambient * 2;
+		color += gl_FrontMaterial.ambient * gl_LightSource[0].ambient;
 		
 		NdotL = max(dot(n,lightDir0),0.0);
 		
@@ -36,16 +36,16 @@ void main()
 		}
 	}
 	
-	if (length(eyeToVert) < 100) {
-		if (mod(worldPos.y + 1 + ship.y,4) < 0.1 ||
-			mod(worldPos.x + 4.5 + ship.x,9) < 0.1 ||
-			mod(worldPos.z + ship.z,10) < 0.1) {
-			color = vec4(1, 1, 0.5, 1);
+	if (length(eyeToVert) < 100.0) {
+		if (mod(worldPos.y + 1.0 + ship.y, 4.0) < 0.1 ||
+			mod(worldPos.x + 4.5 + ship.x, 9.0) < 0.1 ||
+			mod(worldPos.z + ship.z, 10.0) < 0.1) {
+			color = vec4(1.0, 1.0, 0.5, 1.0);
 		}
 	}
 	
-	if (eyeToVert.z > 40 && eyeToVert.z < 41) {
-		color = vec4(1,0,0,1);
+	if (eyeToVert.z > 40.0 && eyeToVert.z < 41.0) {
+		color = vec4(1.0,0.0,0.0,1.0);
 	}
 	
 	gl_FragColor = color;

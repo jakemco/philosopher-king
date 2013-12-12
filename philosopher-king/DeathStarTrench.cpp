@@ -43,13 +43,18 @@ DeathStarTrench::DeathStarTrench() {
 	this->trenchSize = 10;
 	this->trench = new RandomTrench(trenchSize);
 
-    
+	this->targetingShaderEnabled = false;
 }
 
 void DeathStarTrench::init() {
     glGenTextures(MAX_MAPS, &Texture::textures[0]);
     Texture::loadPPM("yavin.ppm", BG_TEXTURE);
     Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
+
+	this->targetingShader = new Shader(
+		"../resources/shaders/targeting.vert",
+		"../resources/shaders/targeting.frag",
+		true);
 }
 
 void DeathStarTrench::update(float dt) {
@@ -61,9 +66,19 @@ void DeathStarTrench::update(float dt) {
     position[2] = ship.getPosition().z() + 7;
     mCamera->setPosition(position);
 
+	if (controls->getTargetingComputerOn() != this->targetingShaderEnabled) {
+		this->targetingShaderEnabled = !this->targetingShaderEnabled;
+		if (this->targetingShaderEnabled) {
+			this->targetingShader->bind();
+		}
+		else {
+			this->targetingShader->unbind();
+		}
+	}
+
 	Vector4 shipPos = ship.getPosition();
-	glUniform3f(glGetUniformLocationARB(Window::targetingShader->getPid(), "ship"), shipPos[0], shipPos[1], shipPos[2]);
-	glUniform3f(glGetUniformLocationARB(Window::targetingShader->getPid(), "cameraPosition"), 0, 1, 7);
+	glUniform3f(glGetUniformLocation(this->targetingShader->getPid(), "ship"), shipPos[0], shipPos[1], shipPos[2]);
+	glUniform3f(glGetUniformLocation(this->targetingShader->getPid(), "cameraPosition"), 0, 1, 7);
 
     this->trench->update(dt, position, DRAW_DIST);
 

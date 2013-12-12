@@ -20,8 +20,6 @@ public:
     
     static InputManager* input;
     static WorldManager* world;
-
-	static Shader* targetingShader;
     
     static int main(int argc, char* argv[]);
 	static void reshapeCallback(int w, int h);

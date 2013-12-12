@@ -79,15 +79,7 @@ void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
 	case 'r': gameController->reset(); break;
 	case 'q': Window::quit(); break;
 	case 'f': glutFullScreen(); break;
-	case 't':
-		this->targetingComputerOn = !this->targetingComputerOn;
-		if (targetingComputerOn) {
-			Window::targetingShader->bind();
-		}
-		else {
-			Window::targetingShader->unbind();
-		}
-		break;
+	case 't': this->targetingComputerOn = !this->targetingComputerOn; break;
     }
 }
 
@@ -105,4 +97,8 @@ float FlightControls::getY() {
 	}
 
 	return yProp; 
+}
+
+bool FlightControls::getTargetingComputerOn() {
+	return this->targetingComputerOn;
 }
