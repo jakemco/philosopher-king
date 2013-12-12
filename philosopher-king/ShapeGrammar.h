@@ -1,13 +1,14 @@
 #pragma once
 
 #include "ObjReader.h"
+#include "Vector4.h"
 
 class ShapeGrammar
 {
 public:
     static void init();
     
-    static float maxPartRange();
+    static void maxPartRange();
     static void designShip();
 
     static void nextDroidPart();
@@ -23,6 +24,10 @@ public:
     static void makeAWing();
     static void makeXWing();
     static void makeYWing();
+
+    static Vector4 minVerts;
+    static Vector4 maxVerts;
+    static float scaleSize;
 
 private:
     static const int AWING = 0;

@@ -1,5 +1,6 @@
+#include <iostream>
 #include "ShapeGrammar.h"
-#include <cstring>
+
 
 #ifdef WIN32
 #include "GL/glut.h"
@@ -36,6 +37,10 @@ int ShapeGrammar::wingPart = 0;
 
 int ShapeGrammar::initialized = 0;
 
+Vector4 ShapeGrammar::minVerts;
+Vector4 ShapeGrammar::maxVerts;
+float ShapeGrammar::scaleSize;
+
 void ShapeGrammar::init()
 {
     int i;
@@ -58,14 +63,26 @@ void ShapeGrammar::init()
     initialized = 1;
 }
 
-float ShapeGrammar::maxPartRange() {
-    float dRange, eRange, fRange, wRange;
-    dRange = droids[droidPart].getMaxRange();
-    eRange = engines[enginePart].getMaxRange();
-    fRange = fronts[frontPart].getMaxRange(); 
-    wRange = wings[wingPart].getMaxRange();
+void ShapeGrammar::maxPartRange() {
+    ObjReader parts[] = { droids[droidPart], engines[enginePart], fronts[frontPart], wings[wingPart] };
+    
+    for (int i = 0; i < 4; ++i) { // find min, max Y
+        minVerts.set(1, fmin(parts[i].getMinVerts().get(1), minVerts.get(1)));
+        maxVerts.set(1, fmax(parts[i].getMaxVerts().get(1), maxVerts.get(1)));
+    }
 
-    return fmax(dRange, fmax(eRange, fmax(fRange, wRange)));
+    minVerts.set(0, -parts[3].getMaxVerts().get(0)); // min X is max wing part X b/c of flip
+    maxVerts.set(0, parts[3].getMaxVerts().get(0));  // max X is max wing part X
+
+    minVerts.set(2, parts[2].getMinVerts().get(2)); // min Z is min front part Z
+    maxVerts.set(2, parts[3].getMaxVerts().get(2)); // maz Z is max engine part Z
+
+
+    float rangeX = engines[enginePart].getMaxVerts().get(0) - engines[enginePart].getMinVerts().get(0);
+    float rangeY = engines[enginePart].getMaxVerts().get(1) - engines[enginePart].getMinVerts().get(1);
+    float rangeZ = engines[enginePart].getMaxVerts().get(2) - engines[enginePart].getMinVerts().get(2);
+
+    scaleSize = fmax(rangeX, (float)fmax(rangeY, rangeZ));
 }
 
 void ShapeGrammar::designShip() {

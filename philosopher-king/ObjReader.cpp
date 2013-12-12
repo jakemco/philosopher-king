@@ -247,14 +247,9 @@ void ObjReader::findMinMaxVerts() {
         maxY = fmax(y, maxY);
         maxZ = fmax(z, maxZ);
     }
-    minX = abs(minX);
-    minY = abs(minY);
-    minZ = abs(minZ);
-    x = fmax(maxX, minX);
-    y = fmax(maxY, minY);
-    z = fmax(maxZ, minZ);
 
-    maxRange = fmax(x, fmax(y, z));
+    minVerts.set(minX, minY, minZ);
+    maxVerts.set(maxX, maxY, maxZ);
 }
 
 int ObjReader::getNVerts()   { return nVerts; }
@@ -263,4 +258,5 @@ float const * const ObjReader::getNormals()   { return normals; }
 float const * const ObjReader::getTexcoords() { return texcoords; }
 int const * const ObjReader::getIndices()     { return indices; }
 int ObjReader::getNIndices() { return nIndices; }
-int ObjReader::getMaxRange() { return maxRange; }
+Vector4 ObjReader::getMinVerts() { return minVerts; }
+Vector4 ObjReader::getMaxVerts() { return maxVerts; }

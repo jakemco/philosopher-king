@@ -48,8 +48,9 @@ void Ship::render() {
 	glRotatef(this->zrotAngle * 180.0 / M_PI, 0, 0, 1);
     glRotatef(this->angle * 180.0 / M_PI, this->rotate.x(), this->rotate.y(), this->rotate.z());
 
-    float maxRange = ShapeGrammar::maxPartRange();
-    glScalef(1 / maxRange, 1 / maxRange, 1 / maxRange);
+    ShapeGrammar::maxPartRange();
+    float scale = 2 * ShapeGrammar::scaleSize;
+    glScalef(1 / scale, 1 / scale, 1 / scale);
 
 	if (crashed) glColor3f(1.0, 0.2, 0.2);
     else glColor3f(1,1,1);

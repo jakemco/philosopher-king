@@ -2,6 +2,7 @@
 #define __ObjReader_h__
 
 #include <cmath>
+#include "Vector4.h"
 
 class ObjReader
 {
@@ -17,7 +18,8 @@ public:
     float const * const getTexcoords();
     int const * const getIndices();
     int getNIndices();
-    int getMaxRange();
+    Vector4 getMinVerts();
+    Vector4 getMaxVerts();
 
 private:
     int nVerts;
@@ -26,7 +28,8 @@ private:
     float *texcoords;
     int nIndices;
     int *indices;
-    float maxRange;
+    Vector4 minVerts;
+    Vector4 maxVerts;
 
     static void get_indices(char *word, int *vindex, int *tindex, int *nindex);
     void readObj(char* fileName, int &nVertices, float **vertices,
