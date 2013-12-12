@@ -35,6 +35,7 @@ DEFINE_GUID(g_guidServiceClass, 0xa2b6fe70, 0x614b, 0x11e3, 0x94, 0x9a, 0x08, 0x
 
 GlassControls::GlassControls() {
 	this->pitch = 0;
+	this->pitchZero = PITCH_CORRECTION;
 	this->roll = 0;
 	this->btReadThread = nullptr;
 }
@@ -76,8 +77,12 @@ void GlassControls::initiateBluetooth() {
 #endif
 }
 
+void GlassControls::calibratePitch() {
+	this->pitchZero = -this->pitch;
+}
+
 float GlassControls::getPitch() {
-	return this->pitch + PITCH_CORRECTION;
+	return this->pitch + this->pitchZero;
 }
 
 float GlassControls::getRoll() {
