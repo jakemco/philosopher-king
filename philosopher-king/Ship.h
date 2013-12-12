@@ -30,4 +30,5 @@ public:
 	BoundingBox getBox() const;
 
 	void crash();
+	void reset();
 };

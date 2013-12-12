@@ -21,14 +21,17 @@ private:
     MoveableCamera* mCamera;
     FlightControls* controls;
     Ship ship;
-	RandomTrench trench;
+	RandomTrench* trench;
     
-    float trenchWidth, trenchHeight;
+    float trenchSize;
     
 public:
     
-    DeathStarTrench(FlightControls*);
+    DeathStarTrench();
     
     virtual void update(float);
     virtual void render();
+	virtual void reset();
+
+	InputManager* getControls();
 };

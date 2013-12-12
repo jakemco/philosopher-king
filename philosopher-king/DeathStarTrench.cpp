@@ -31,24 +31,24 @@
 #define BOTTOM_TEX_SIZE 1
 #define SKYBOX_RADIUS 500
 
-DeathStarTrench::DeathStarTrench(FlightControls* f) : trench(10) {
+DeathStarTrench::DeathStarTrench() {
 
 	srand(time(NULL));
 
     this->camera = new MoveableCamera(Vector4(0, 0, 20, 1), Vector4(0, 0, 0, 1), Vector4(0, 1, 0));
     this->mCamera = (MoveableCamera*)this->camera;
 
-    this->controls = f;
+	this->controls = new FlightControls(this);
 
-    this->trenchHeight = 10;
-    this->trenchWidth = 10;
+	this->trenchSize = 10;
+	this->trench = new RandomTrench(trenchSize);
 
     Texture::loadPPM("trench.ppm", TRENCH_TEXTURE);
 
 }
 
 void DeathStarTrench::update(float dt) {
-    ship.update(dt, controls->getX() * trenchWidth, controls->getY() * trenchHeight);
+    ship.update(dt, controls->getX() * trenchSize, controls->getY() * trenchSize);
 
     Vector4 position = mCamera->getPosition();
     position[0] = ship.getPosition().x();
@@ -56,15 +56,15 @@ void DeathStarTrench::update(float dt) {
     position[2] = ship.getPosition().z() + 7;
     mCamera->setPosition(position);
 
-    this->trench.update(position.z(), DRAW_DIST);
+    this->trench->update(position.z(), DRAW_DIST);
 
-    if (this->trench.collision(ship)) ship.crash();
+    if (this->trench->collision(ship)) ship.crash();
 }
 
 void DeathStarTrench::render() {
 
     ship.render();
-    trench.render();
+    trench->render();
     Vector4 position = mCamera->getPosition();
 
 	float skybox_dist = position.z() - DRAW_DIST + 20;
@@ -82,4 +82,14 @@ void DeathStarTrench::render() {
 
 
 	
+}
+
+void DeathStarTrench::reset() {
+	ship.reset();
+	delete trench;
+	this->trench = new RandomTrench(trenchSize);
+}
+
+InputManager* DeathStarTrench::getControls() {
+	return this->controls;
 }

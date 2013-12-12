@@ -24,8 +24,7 @@
 const float Ship::SPEED = 50.0f;
 
 Ship::Ship() {
-	this->position = Vector4(0, 0, 0, 1);
-	this->crashed = false;
+	this->reset();
 }
 
 void Ship::update(float dt, float x, float y) {
@@ -67,4 +66,9 @@ BoundingBox Ship::getBox() const {
 
 void Ship::crash() {
 	crashed = true;
+}
+
+void Ship::reset() {
+	this->position = Vector4(0, 0, 0, 1);
+	this->crashed = false;
 }

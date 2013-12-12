@@ -21,5 +21,7 @@ protected:
 public:
     virtual void idleCallback();
     virtual void displayCallback();
+
+	virtual void reset() = 0;
     
 };

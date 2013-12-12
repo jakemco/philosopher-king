@@ -22,12 +22,14 @@
 
 #define CLAMP(x,a,b) ((x) < (a) ? (a) : ((x) > (b) ? (b) : (x)))
 
-FlightControls::FlightControls() : InputManager() {
+FlightControls::FlightControls(WorldManager* gc) : InputManager() {
 	this->xProp = 0;
 	this->yProp = 0;
 	this->useGlass = false;
 	this->glassOverride = new GlassControls();
 	this->glassOverride->connectToGlass();
+
+	this->gameController = gc;
 }
 
 void FlightControls::passiveMotionCallback(int x, int y) {
@@ -61,6 +63,8 @@ void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
     case '4': ShapeGrammar::nextWingPart(); break;
 
 	case 'g': useGlass = !useGlass; break;
+
+	case 'r': gameController->reset(); break;
     }
 }
 

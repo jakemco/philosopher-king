@@ -16,8 +16,8 @@
 #include "Texture.h"
 
 int main(int argc, char* argv[]) {
-    Window::input = new FlightControls();
-    Window::world = new DeathStarTrench((FlightControls*)Window::input);
+    Window::world = new DeathStarTrench();
+	Window::input = ((DeathStarTrench*) (Window::world))->getControls();
     
     return Window::main(argc,argv);
 }

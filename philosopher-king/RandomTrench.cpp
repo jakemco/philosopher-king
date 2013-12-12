@@ -32,6 +32,9 @@ RandomTrench::RandomTrench(float size)
 
 RandomTrench::~RandomTrench()
 {
+	for (std::pair<int,Building*> b : this->buildings) {
+		delete b.second;
+	}
 }
 
 

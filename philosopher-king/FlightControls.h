@@ -10,6 +10,7 @@
 
 #include "InputManager.h"
 #include "GlassControls.h"
+#include "WorldManager.h"
 
 class FlightControls : public InputManager {
 private:
@@ -17,9 +18,11 @@ private:
 	GlassControls *glassOverride;
 	bool useGlass;
     
+	WorldManager* gameController;
+
 public:
 
-	FlightControls();
+	FlightControls(WorldManager*);
     
     virtual void passiveMotionCallback(int x, int y);
 	virtual void activeMotionCallback(int x, int y);
