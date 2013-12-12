@@ -64,8 +64,13 @@ Vector4 Ship::getPosition() const {
     return this->position;
 }
 
-BoundingBox Ship::getBox() const {
-	return BoundingBox(this->position, 1, 1, 1);
+BoundingBox Ship::getBox() const {    
+    float xRange, yRange, zRange, scale;
+    scale = 2 * ShapeGrammar::scaleSize;
+    xRange = (ShapeGrammar::maxVerts.get(0) - ShapeGrammar::minVerts.get(0)) / scale;
+    yRange = (ShapeGrammar::maxVerts.get(1) - ShapeGrammar::minVerts.get(1)) / scale;
+    zRange = (ShapeGrammar::maxVerts.get(2) - ShapeGrammar::minVerts.get(2)) / scale;
+    return BoundingBox(this->position, xRange, yRange, zRange);
 }
 
 void Ship::crash() {
