@@ -20,6 +20,8 @@ private:
     
 	WorldManager* gameController;
 
+	bool shooting;
+
 public:
 
 	FlightControls(WorldManager*);
@@ -31,6 +33,8 @@ public:
     
     float getX();
     float getY();
+
+	bool isShooting();
     
     
 };

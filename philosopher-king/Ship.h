@@ -8,8 +8,11 @@
 
 #pragma once
 
+#include <set>
+
 #include "Vector4.h"
 #include "BoundingBox.h"
+#include "Laser.h"
 
 class Ship {
 private:
@@ -19,12 +22,17 @@ private:
 	float zrotAngle;
 
 	bool crashed;
+
+	float charge;
+
+	std::set<Laser*> lasers;
+
 public:
 	static const float SPEED;
     
     Ship();
     
-    void update(float, float, float, float);
+    void update(float, float, float, float, bool);
     void render();
     
     Vector4 getPosition() const;

@@ -77,7 +77,7 @@ void RandomTrench::update(float dt, const Vector4& position, int d)
 
 	for (Laser* l : lasers) {
 		l->update(dt);
-		if (l->getPosition().y() > 250) things.insert(l);
+		if (l->dead(200)) things.insert(l);
 	}
 
 	for (Laser* l : things) {

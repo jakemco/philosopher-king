@@ -44,7 +44,15 @@ void FlightControls::passiveMotionCallback(int x, int y) {
 
 void FlightControls::activeMotionCallback(int x, int y) { this->passiveMotionCallback(x, y); }
 
-void FlightControls::mouseCallback(int button, int state, int x, int y) {}
+void FlightControls::mouseCallback(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+		shooting = true;
+	else
+		shooting = false;
+}
+
+bool FlightControls::isShooting() { return shooting; }
+
 void FlightControls::keyboardCallback(unsigned char key, int x, int y) {
     switch (key) {
     case 'a':

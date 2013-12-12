@@ -27,8 +27,10 @@ Ship::Ship() {
 	this->reset();
 }
 
-void Ship::update(float dt, float x, float y, float controlsX) {
+void Ship::update(float dt, float x, float y, float controlsX, bool shooting) {
 	if (!crashed) {
+		charge += dt;
+
 		Vector4 destination(position.x() + x, position.y() + y, position.z() - SPEED, 1.0f);
 		Vector4 dir = Vector4::normalize(destination - position)*SPEED*dt;
 
@@ -38,6 +40,32 @@ void Ship::update(float dt, float x, float y, float controlsX) {
 		this->zrotAngle = -controlsX;
 
 		this->position += dir;
+
+		if (shooting && charge > 0.3) {
+			charge = 0;
+
+			Vector4 lStart = position + Vector4(-0.5, 0, 0);
+			Vector4 rStart = position + Vector4(0.5, 0, 0);
+
+			Vector4 target = position + Vector4(0, 0, -200);
+
+			Vector4 color(0.8, 0.4, 0.2);
+
+			this->lasers.insert(new Laser(lStart,target,color));
+			this->lasers.insert(new Laser(rStart, target, color));
+		}
+
+		std::set<Laser*> trash;
+
+		for (Laser* l : lasers) {
+			if (l->dead(200)) trash.insert(l);
+			else l->update(dt);
+		}
+
+		for (Laser*l : trash) {
+			lasers.erase(l);
+			delete l;
+		}
 	}
 }
 
@@ -58,6 +86,8 @@ void Ship::render() {
     ShapeGrammar::designShip();
     
 	glPopMatrix();
+
+	for (Laser* l : lasers) l->render();
 }
 
 Vector4 Ship::getPosition() const {
@@ -80,4 +110,5 @@ void Ship::crash() {
 void Ship::reset() {
 	this->position = Vector4(0, 0, 0, 1);
 	this->crashed = false;
+	this->charge = 0;
 }
