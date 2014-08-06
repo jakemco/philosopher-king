@@ -7,4 +7,4 @@ tags: []
 ---
 {% include JB/setup %}
 
-<iframe width="420" height="315" src="//www.youtube.com/embed/cbaKCi14uCw" frameborder="0" allowfullscreen></iframe>
+<iframe width="700" height="470" src="//www.youtube.com/embed/cbaKCi14uCw" frameborder="0" allowfullscreen></iframe>
